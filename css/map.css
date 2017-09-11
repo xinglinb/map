@@ -1,0 +1,191 @@
+@media (min-width: 1080px){
+
+}
+
+body{
+	background-color: #f9ebc8
+}
+
+a:hover{
+	text-decoration:none
+}
+
+#head{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+	background-color: #fff
+}
+
+.navbar-default{
+	background-color: #fff;
+	border-bottom: 1px solid #ffffff;
+	box-shadow: 0 0 5px rgba(0,0,0,.1);
+	padding-left: 0px;
+	border-radius: 0;
+	margin-bottom: 0
+}
+
+.navbar-default .navbar-brand{
+	font-size: 28px;
+	min-width: 90px;
+	font-family: "Times New Roman", Georgia, serif;
+	font-style: italic;
+	font-weight: 700;
+	padding: 12px 0 18px 0;
+	text-align: center;
+	border-right:  1px solid #d1d5d9;
+	color: #22baa0
+}
+
+.navbar-default .navbar-brand:hover{
+	color: #3ce6c9
+}
+
+#left{
+	position: absolute;
+	top: 52px;
+	bottom: 0;
+	background-color: #233445;
+	width: 90px;
+	border-right: 1px solid #162636;
+	overflow-y:auto;
+	z-index: 100;
+	box-shadow: 1px 1px -1px #162636;
+}
+
+.col-md-12{
+	padding: 0
+}
+
+
+
+#left .container{
+	color: #6d7e8e;
+	width: 80px
+}
+
+#left .container .row{
+	padding: 0;
+	margin-top: 30px;
+	width: 80px;
+	cursor: pointer;
+	font-size: 10px;
+	height: 55px
+}
+
+#left .container .row span{
+	font-size: 25px;
+	margin-left: 27px;
+	margin-top: 10px
+}
+
+#left .container .row p{
+	margin-top: 5px;
+	font-size: 10px;
+	text-align: center;
+}
+
+#left .container .act{
+	color: rgba(255,255,255,0.9);
+	
+}
+
+#left .container .row a{
+	color: rgba(255,255,255,0.3);
+	transition:color 0.2s;
+	-moz-transition:color 0.2s; 
+	-webkit-transition:color 0.2s; 
+	-o-transition:color 0.2s; 
+}
+
+#left .container .row a:hover{
+	color: rgba(255,255,255,0.9);
+}
+
+#right{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top: 52px;
+	left: 90px;
+	overflow-y:auto;
+	background-color: #f5f6f7
+}
+
+
+#right .con{
+	width: 100%;
+	margin-top: 20px;
+	
+}
+
+
+
+
+#right .con .row div{
+	line-height: 1.8;
+	color: #656565
+}
+
+.simple{
+	cursor: pointer;
+}
+
+
+#map {
+    margin: 10px auto;
+    height: 500px;
+    
+}
+
+
+#machine {
+	height: 800px;
+}
+
+#machine img{
+	width: 100%
+}
+
+#machine .tex{
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 20px
+}
+
+
+@media (min-width: 848px) {
+	.container {
+		width: 750px;
+	}
+}
+@media (min-width: 1072px) {
+	.container {
+		width: 970px;
+	}
+}
+@media (min-width: 1280px) {
+	.container {
+		width: 1170px;
+	}
+}
+
+
+@media (min-width: 768px) {
+	#right .con .container .pan-head p{
+		text-align: center;
+	}
+
+}
+
+@media (max-width: 768px) {
+	#right .con .container .pan-head p{
+		text-align: left;
+		margin-left: 15px
+	}
+
+}
+
+
