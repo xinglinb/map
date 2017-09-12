@@ -18,7 +18,7 @@ a:hover{
 	background-color: #fff
 }
 
-.navbar-default{
+#head .navbar-default{
 	background-color: #fff;
 	border-bottom: 1px solid #ffffff;
 	box-shadow: 0 0 5px rgba(0,0,0,.1);
@@ -27,7 +27,7 @@ a:hover{
 	margin-bottom: 0
 }
 
-.navbar-default .navbar-brand{
+#head .navbar-default .navbar-brand{
 	font-size: 28px;
 	min-width: 90px;
 	font-family: "Times New Roman", Georgia, serif;
@@ -39,8 +39,28 @@ a:hover{
 	color: #22baa0
 }
 
-.navbar-default .navbar-brand:hover{
+#head .navbar-default .navbar-brand:hover{
 	color: #3ce6c9
+}
+
+#circle{
+  	width: 40px;
+  	height: 40px;
+  	text-align: center;
+  	line-height: 40px;
+  	border: solid 1px #afdff8;
+  	color: #e7e8e8;
+  	cursor: pointer;
+  	font-size: 18px;
+  	margin-top: 6px;
+  	margin-right: 20px;
+  	border-radius: 20px;
+  	background-color: #5896cc
+}
+
+#circle:hover{
+	background-color: #337ab7;
+	color: #fff
 }
 
 #left{
@@ -72,12 +92,13 @@ a:hover{
 	width: 80px;
 	cursor: pointer;
 	font-size: 10px;
-	height: 55px
+	height: 55px;
+	text-align: center;
 }
 
 #left .container .row span{
 	font-size: 25px;
-	margin-left: 27px;
+	text-align: center;
 	margin-top: 10px
 }
 
@@ -93,6 +114,7 @@ a:hover{
 }
 
 #left .container .row a{
+	text-align: center;
 	color: rgba(255,255,255,0.3);
 	transition:color 0.2s;
 	-moz-transition:color 0.2s; 
@@ -126,7 +148,6 @@ a:hover{
 
 #right .con .row div{
 	line-height: 1.8;
-	color: #656565
 }
 
 .simple{
