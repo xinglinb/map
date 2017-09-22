@@ -1,139 +1,22 @@
-@media (min-width: 1080px){
-
-}
 
 body{
-	background-color: #f9ebc8
+	background-color: #404a59;
+	font-family: 微软雅黑
 }
 
 a:hover{
 	text-decoration:none
 }
 
-#head{
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 100;
-	background-color: #fff
-}
-
-#head .navbar-default{
-	background-color: #fff;
-	border-bottom: 1px solid #ffffff;
-	box-shadow: 0 0 5px rgba(0,0,0,.1);
-	padding-left: 0px;
-	border-radius: 0;
-	margin-bottom: 0
-}
-
-#head .navbar-default .navbar-brand{
-	font-size: 28px;
-	min-width: 90px;
-	font-family: "Times New Roman", Georgia, serif;
-	font-style: italic;
-	font-weight: 700;
-	padding: 12px 0 18px 0;
-	text-align: center;
-	border-right:  1px solid #d1d5d9;
-	color: #22baa0
-}
-
-#head .navbar-default .navbar-brand:hover{
-	color: #3ce6c9
-}
-
-#circle{
-  	width: 40px;
-  	height: 40px;
-  	text-align: center;
-  	line-height: 40px;
-  	border: solid 1px #afdff8;
-  	color: #e7e8e8;
-  	cursor: pointer;
-  	font-size: 18px;
-  	margin-top: 6px;
-  	margin-right: 20px;
-  	border-radius: 20px;
-  	background-color: #5896cc
-}
-
-#circle:hover{
-	background-color: #337ab7;
-	color: #fff
-}
-
-#left{
-	position: absolute;
-	top: 52px;
-	bottom: 0;
-	background-color: #233445;
-	width: 90px;
-	border-right: 1px solid #162636;
-	overflow-y:auto;
-	z-index: 100;
-	box-shadow: 1px 1px -1px #162636;
-}
-
-.col-md-12{
-	padding: 0
-}
-
-
-
-#left .container{
-	color: #6d7e8e;
-	width: 80px
-}
-
-#left .container .row{
-	padding: 0;
-	margin-top: 30px;
-	width: 80px;
-	cursor: pointer;
-	font-size: 10px;
-	height: 55px;
-	text-align: center;
-}
-
-#left .container .row span{
-	font-size: 25px;
-	text-align: center;
-	margin-top: 10px
-}
-
-#left .container .row p{
-	margin-top: 5px;
-	font-size: 10px;
-	text-align: center;
-}
-
-#left .container .act{
-	color: rgba(255,255,255,0.9);
-	
-}
-
-#left .container .row a{
-	text-align: center;
-	color: rgba(255,255,255,0.3);
-	transition:color 0.2s;
-	-moz-transition:color 0.2s; 
-	-webkit-transition:color 0.2s; 
-	-o-transition:color 0.2s; 
-}
-
-#left .container .row a:hover{
-	color: rgba(255,255,255,0.9);
-}
 
 #right{
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	top: 52px;
-	left: 90px;
-	overflow-y:auto;
-	background-color: #f5f6f7
+	top: 0;
+	left: 0;
+	position: fixed;
+	background-color: #404a59
 }
 
 
@@ -142,40 +25,127 @@ a:hover{
 	margin-top: 20px;
 	
 }
+#right .con .row{
+	padding: 0;
+	margin: 0;
+
+}
 
 
 
-
-#right .con .row div{
+#right .con .row .panel{
 	line-height: 1.8;
+	background-color: #404a59;
+	border: #404a59;
+	color: #fff
 }
 
-.simple{
-	cursor: pointer;
+#top{
+	z-index: 100;
+	color: #fff;
+	text-align: center;
+	height: 60px;
+	font-size: 35px
 }
 
+#top p{
+	margin-left: 150px
+}
+
+
+/*地图*/
 
 #map {
-    margin: 10px auto;
-    height: 500px;
+    margin: -135px auto;
+    width: 1050px;
+    height: 900px;
+    z-index: 2
     
 }
 
 
-#machine {
-	height: 800px;
+
+#text-o{
+	z-index: 10;
+	position: relative;
+	top: -25px;
+	left: 0;
+	width: 100%;
+	text-align: center;;
+	color: #fff;
+	font-size: 30px
 }
 
-#machine img{
-	width: 100%
+/*机器*/
+.simple{
+	cursor: pointer;
 }
 
-#machine .tex{
-	width: 80%;
-	margin-left: 10%;
-	margin-top: 20px
+#machine .simple .panel-yes .panel-heading{
+	background-color: #4985b9;
+	opacity: 0.9;
+	border-color: #337ab7;
+	border-radius: 5px;
+	color: #fff;
 }
 
+#machine .simple .panel-yes .panel-heading:hover{
+	opacity: 1;
+}
+
+#machine .simple .panel-no .panel-heading{
+	background-color: #d9534f;
+	opacity: 0.9;
+	border-color: #d43f3a;
+	border-radius: 5px;
+	color: #fff;
+}
+
+#machine .simple .panel-no .panel-heading:hover{
+	opacity: 1;
+}
+
+
+
+
+/*左边第一行*/
+#text-one{
+	
+}
+
+#imgone{
+	height: 500px;
+	width: 500px;
+	margin-left: -120px
+
+}
+#imgtwo{
+	height: 450px;
+	width: 440px;
+	margin-left: -70px
+}
+
+/*第二行*/
+#text-two{
+	margin-top: -70px
+}
+
+#imgthree{
+	height: 400px;
+	width: 550px;
+	margin-left: -130px
+}
+
+#imgfour{
+	height: 400px;
+}
+
+#text-one,#text-two{
+	color: #fff;
+	text-align: center;
+	font-size: 30px;
+	line-height: 40px;
+}
 
 @media (min-width: 848px) {
 	.container {
