@@ -46,7 +46,8 @@ a:hover{
 	z-index: 100;
 	color: #fff;
 	text-align: center;
-	height: 60px;
+	padding-top: 15px;
+	height: 80px;
 	font-size: 35px
 }
 

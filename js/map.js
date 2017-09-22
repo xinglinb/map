@@ -377,6 +377,11 @@ function map(){
 	myChart.setOption(option);
 
 	myChart.on('click', function (params) {
+		// imgone();
+		// imgtwo();
+		// imgthree();
+		// imgfour();
+		
 		var num = params.value;
 		var city = params.name;
 		if (num>=0&&num<=10) {
