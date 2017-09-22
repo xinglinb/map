@@ -138,6 +138,8 @@ a:hover{
 
 #imgfour{
 	height: 400px;
+	width: 380px;
+	margin-left: -30px
 }
 
 #text-one,#text-two{
@@ -147,36 +149,6 @@ a:hover{
 	line-height: 40px;
 }
 
-@media (min-width: 848px) {
-	.container {
-		width: 750px;
-	}
-}
-@media (min-width: 1072px) {
-	.container {
-		width: 970px;
-	}
-}
-@media (min-width: 1280px) {
-	.container {
-		width: 1170px;
-	}
-}
-
-
-@media (min-width: 768px) {
-	#right .con .container .pan-head p{
-		text-align: center;
-	}
-
-}
-
-@media (max-width: 768px) {
-	#right .con .container .pan-head p{
-		text-align: left;
-		margin-left: 15px
-	}
-
-}
-
-
+/*#right .row .col-lg-5{
+	background-color: rgba(0,0,0,0.1);
+}*/
