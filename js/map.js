@@ -395,7 +395,9 @@ function imgone(){
 			left: 'center',
 			top: 0,
 			textStyle: {
-				color: '#fff'
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
 			}
 		},
 
@@ -470,11 +472,14 @@ function imgtwo(){
 	ption = {
 		title: {
 			text: '设备负荷情况',
+
 			left: 'center',
 			top: 0,
 			bottom:20,
 			textStyle: {
-				color: '#fff'
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
 			}
 		},
 		tooltip: {
@@ -663,7 +668,9 @@ function imgthree(){
 			top: 20,
 			bottom:20,
 			textStyle: {
-				color: '#fff'
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
 			}
 		},
 		series : [
@@ -956,7 +963,9 @@ function imgfour(){
 			left: 'center',
 			top: 20,
 			textStyle: {
-				color: '#fff'
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
 			}
 		},
 		tooltip: {

@@ -1,7 +1,7 @@
 
 body{
 	background-color: #404a59;
-	font-family: 微软雅黑
+	font-family: 楷体
 }
 
 a:hover{
@@ -48,19 +48,19 @@ a:hover{
 	font-size: 35px
 }
 
-#top p{
-	margin-left: 150px
+#top img{
+	margin-left: 140px
 }
 
 
 /*地图*/
 
 #map {
-    margin: -135px auto;
-    width: 1050px;
-    height: 900px;
-    z-index: 2
-    
+	margin: -135px auto;
+	width: 1050px;
+	height: 900px;
+	z-index: 2
+
 }
 
 
@@ -68,12 +68,13 @@ a:hover{
 #text-o{
 	z-index: 10;
 	position: relative;
-	top: -25px;
+	top: -15px;
 	left: 0;
 	width: 100%;
 	text-align: center;;
 	color: #fff;
-	font-size: 30px
+	font-size: 30px;
+	font-family: 楷体
 }
 
 /*机器*/
@@ -109,14 +110,17 @@ a:hover{
 
 
 /*左边第一行*/
-#text-one{
-	
+#text-one p{
+	margin-top: 10px;
+
+	padding-bottom: 10px
 }
 
 #imgone{
 	height: 500px;
 	width: 500px;
-	margin-left: -120px
+	margin-left: -120px;
+
 
 }
 #imgtwo{
@@ -127,7 +131,7 @@ a:hover{
 
 /*第二行*/
 #text-two{
-	margin-top: -70px
+	margin-top: -55px;
 }
 
 #imgthree{
@@ -147,6 +151,7 @@ a:hover{
 	text-align: center;
 	font-size: 30px;
 	line-height: 40px;
+	font-family: 楷体
 }
 
 /*#right .row .col-lg-5{
