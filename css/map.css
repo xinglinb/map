@@ -16,7 +16,10 @@ a:hover{
 	top: 0;
 	left: 0;
 	position: fixed;
-	background-color: #404a59
+	/*background-color: #404a59;*/
+	background-color: #1c6397;
+	background-size:100% 100%;
+	background-image: url(../images/bac.jpg);
 }
 
 
@@ -35,7 +38,6 @@ a:hover{
 
 #right .con .row .panel{
 	line-height: 1.8;
-	background-color: #404a59;
 	border: #404a59;
 	color: #fff
 }
@@ -48,6 +50,11 @@ a:hover{
 	font-size: 35px
 }
 
+#top span{
+	float: left;
+	padding-left: 100px
+}
+
 #top img{
 	margin-left: 160px
 }
@@ -56,10 +63,9 @@ a:hover{
 /*地图*/
 
 #map {
-	margin: -135px auto;
+	margin: -80px auto;
 	width: 1070px;
-	margin-left: -20px;
-	height: 900px;
+	height: 850px;
 	z-index: 2
 
 }
@@ -69,7 +75,7 @@ a:hover{
 #text-o{
 	z-index: 10;
 	position: relative;
-	top: -15px;
+	top: 10px;
 	left: 0;
 	width: 100%;
 	text-align: center;;
@@ -112,7 +118,7 @@ a:hover{
 
 /*左边第一行*/
 #text-one p{
-	margin-top: 10px;
+	margin-top: 15px;
 
 	padding-bottom: 10px
 }

@@ -298,24 +298,17 @@ function map(){
 			},
 			data: convertData([
 				
-				{name: "齐齐哈尔", value: 2},
-				{name: "盐城", value: 5},
-				{name: "赤峰", value: 7},
-				{name: "青岛", value: 9},
-				{name: "乳山", value: 8},
-				{name: "阳泉", value: 31},
-				{name: "莱州", value: 32},
-				{name: "湖州", value: 32},
-				{name: "汕头", value: 32},
-				{name: "昆山", value: 33},
-				{name: "宁波", value: 33},
-				{name: "湛江", value: 33},
-				{name: "揭阳", value: 34},
-				{name: "荣成", value: 34},
-				{name: "合肥", value: 229},
-				{name: "武汉", value: 273},
-				{name: "大庆", value: 279},
-				{name: "连云港", value: 35},
+				
+				{name: "汕头", value: "合锻智能制造"},
+				{name: "昆山", value: "合锻智能制造"},
+				{name: "宁波", value: "合锻智能制造"},
+				{name: "湛江", value: "合锻智能制造"},
+				{name: "揭阳", value: "合锻智能制造"},
+				{name: "荣成", value: "合锻智能制造"},
+				{name: "合肥", value: "合锻智能制造"},
+				{name: "武汉", value: "合锻智能制造"},
+				{name: "大庆", value: "合锻智能制造"},
+				{name: "连云港", value: "合锻智能制造"},
 				]),
 			symbolSize: 15,
 			label: {
@@ -351,12 +344,12 @@ function map(){
 			{name: '云南', value: 8},
 			{name: '辽宁', value: 6},
 			{name: '黑龙江', value: 0},
-			{name: '湖南', value: 9},
+			{name: '湖南', value: 8},
 			{name: '安徽', value: 5},
 			{name: '山东', value: 6},
 			{name: '新疆', value: 0},
 			{name: '江苏', value: 0},
-			{name: '浙江', value: 9},
+			{name: '浙江', value: 8},
 			{name: '江西', value: 6},
 			{name: '湖北', value: 0},
 			{name: '广西', value: 0},
@@ -367,7 +360,7 @@ function map(){
 			{name: '吉林', value: 8},
 			{name: '福建', value: 6},
 			{name: '贵州', value: 0},
-			{name: '广东', value: 9},
+			{name: '广东', value: 8},
 			{name: '青海', value: 0},
 			{name: '西藏', value: 2},
 			{name: '四川', value: 4},
@@ -382,6 +375,52 @@ function map(){
 	}
 
 	myChart.setOption(option);
+
+	myChart.on('click', function (params) {
+		var num = params.value;
+		var city = params.name;
+		if (num>=0&&num<=10) {
+			$("#machine").html("")
+			if (num<3) {
+				for (var i = 0; i < num; i++) {
+					$("#machine").append(
+						"<div class='simple col-lg-3'>"+
+						"<div class='panel panel-yes'>"+
+						"<div class='panel-heading'>"+
+						"<b>"+
+						"<span>"+city+"工大实验室</span>"+
+						"<span class='pull-right'>——"+city+"</span>"+
+						"</b></div></div></div>"
+						)
+				}
+			}else{
+				for (var i = 0; i < num-2; i++) {
+					$("#machine").append(
+						"<div class='simple col-lg-3'>"+
+						"<div class='panel panel-yes'>"+
+						"<div class='panel-heading'>"+
+						"<b>"+
+						"<span>"+city+"工大实验室</span>"+
+						"<span class='pull-right'>——"+city+"</span>"+
+						"</b></div></div></div>"
+						)
+				};
+				for (var i = 0; i < 2; i++) {
+					$("#machine").append(
+						"<div class='simple col-lg-3'>"+
+						"<div class='panel panel-no'>"+
+						"<div class='panel-heading'>"+
+						"<b>"+
+						"<span>"+city+"工大实验室</span>"+
+						"<span class='pull-right'>——"+city+"</span>"+
+						"</b></div></div></div>"
+						)
+				}
+			}
+		}else{
+			window.location.assign("analyse.html")
+		}
+	});
 };
 
 function imgone(){

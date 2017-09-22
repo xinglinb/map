@@ -1,3 +1,61 @@
-#analyse-left,#analyse-right{
-	height: 650px
+
+body{
+	background-color: #404a59;
+	font-family: 楷体
+}
+
+a:hover{
+	text-decoration:none
+}
+
+
+#right{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	position: fixed;
+	/*background-color: #404a59;*/
+	background-color: #1c6397;
+	background-size:100% 100%;
+	background-image: url(../images/bac.jpg);
+}
+
+
+#right .con{
+	width: 100%;
+	margin-top: 20px;
+	
+}
+#right .con .row{
+	padding: 0;
+	margin: 0;
+
+}
+
+
+
+#right .con .row .panel{
+	line-height: 1.8;
+	border: #404a59;
+	color: #fff
+}
+
+#top{
+	z-index: 100;
+	color: #fff;
+	text-align: center;
+	height: 60px;
+	font-size: 35px
+}
+
+#top span{
+	float: left;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+#top img{
+	margin-left: 70px
 }
