@@ -381,6 +381,12 @@ function map(){
 		var city = params.name;
 
 		if (num>0&&num<=10) {
+			$("#imgone").show();
+			$("#imgtwo").show();
+			$("#imgthree").show();
+			$("#imgfour").show();
+			$("#text-one").show();
+			$("#text-two").show();
 			var onex=[];
 			for (var i = 0; i < 5; i++) {
 				onex.push(((Math.random() * 100)+300).toFixed(0))
@@ -395,6 +401,14 @@ function map(){
 			}
 			oney.sort(),
 			imgfour(oney);
+		}else if (num==0) {
+			$("#imgone").hide();
+			$("#imgtwo").hide();
+			$("#imgthree").hide();
+			$("#imgfour").hide();
+			$("#text-one").hide();
+			$("#text-two").hide();
+
 		}
 		
 		if (num>=0&&num<=10) {
