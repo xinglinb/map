@@ -1,10 +1,10 @@
 window.onload=function(){
 
 	map();
-	imgone();
-	imgtwo();
-	imgthree();
-	imgfour();
+	imgone([335,310,360,235,400]);
+	imgtwo(1);
+	imgthree([0,0,0,0],1);
+	imgfour([32, 45,48, 52, 63, 70,75,80, 91]);
 	
 };
 
@@ -377,13 +377,26 @@ function map(){
 	myChart.setOption(option);
 
 	myChart.on('click', function (params) {
-		// imgone();
-		// imgtwo();
-		// imgthree();
-		// imgfour();
-		
 		var num = params.value;
 		var city = params.name;
+
+		if (num>0&&num<=10) {
+			var onex=[];
+			for (var i = 0; i < 5; i++) {
+				onex.push(((Math.random() * 100)+300).toFixed(0))
+			}
+			imgone(onex);
+			imgtwo(2);
+			imgthree([0,0,0,0],2);
+
+			var oney=[];
+			for (var i = 0; i < 9; i++) {
+				oney.push(((Math.random() * 100)).toFixed(0))
+			}
+			oney.sort(),
+			imgfour(oney);
+		}
+		
 		if (num>=0&&num<=10) {
 			$("#machine").html("")
 			if (num<3) {
@@ -428,7 +441,7 @@ function map(){
 	});
 };
 
-function imgone(){
+function imgone(datax){
 	var myChart = echarts.init(document.getElementById('imgone'));
 
 	option = {
@@ -465,11 +478,11 @@ function imgone(){
 			radius : '55%',
 			center: ['50%', '50%'],
 			data:[
-			{value:335, name:'误工率'},
-			{value:310, name:'这种绿'},
-			{value:274, name:'各种率'},
-			{value:235, name:'傻傻率'},
-			{value:400, name:'在线率'}
+			{value:datax[0], name:'误工率'},
+			{value:datax[1], name:'这种绿'},
+			{value:datax[2], name:'各种率'},
+			{value:datax[3], name:'傻傻率'},
+			{value:datax[4], name:'在线率'}
 			].sort(function (a, b) { return a.value - b.value; }),
 			roseType: 'radius',
 			label: {
@@ -509,8 +522,8 @@ function imgone(){
 	myChart.setOption(option);
 };
 
-function imgtwo(){
-
+function imgtwo(x){
+	
 	var Chart = echarts.init(document.getElementById('imgtwo'));
 
 	ption = {
@@ -649,7 +662,7 @@ function imgtwo(){
 				var res = [];
 				var len = 10;
 				while (len--) {
-					res.push(Math.round(Math.random() * 100));
+					res.push(Math.round((Math.random() * 20)+50));
 				}
 				return res;
 			})()
@@ -678,27 +691,30 @@ function imgtwo(){
 
 	Chart.setOption(ption);
 	var qqq= 11;
-	var b= setInterval(function (){
-		axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+	if (x==1) {
+		var b= setInterval(function (){
+			axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
 
-		var data0 = ption.series[0].data;
-		var data1 = ption.series[1].data;
-		data0.shift();
-		data0.push(Math.round((Math.random() * 20)+50));
-		data1.shift();
-		data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
+			var data0 = ption.series[0].data;
+			var data1 = ption.series[1].data;
+			data0.shift();
+			data0.push(Math.round((Math.random() * 20)+50));
+			data1.shift();
+			data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
 
-		ption.xAxis[0].data.shift();
-		ption.xAxis[0].data.push(axisData);
-		ption.xAxis[1].data.shift();
-		ption.xAxis[1].data.push(qqq++);
+			ption.xAxis[0].data.shift();
+			ption.xAxis[0].data.push(axisData);
+			ption.xAxis[1].data.shift();
+			ption.xAxis[1].data.push(qqq++);
 
-		Chart.setOption(ption);
-	}, 2000);
-
+			Chart.setOption(ption);
+		}, 2000);
+	}
+	
 };
 
-function imgthree(){
+function imgthree(datax,x){
+	window.clearInterval(a);
 	var myChart = echarts.init(document.getElementById('imgthree'));
 
 	otion = {
@@ -785,7 +801,7 @@ function imgthree(){
 					fontSize: 18
 				}
 			},
-			data:[{value: 40, name: '风险指数1'}]
+			data:[{value: datax[0], name: '风险指数1'}]
 		},
 		{
 			name:'风险2',
@@ -859,7 +875,7 @@ function imgthree(){
 					fontSize: 20
 				}
 			},
-			data:[{value: 1.5, name: '2'}]
+			data:[{value: datax[1], name: '2'}]
 		},
 		{
 			name:'油表',
@@ -922,7 +938,7 @@ function imgthree(){
 			detail : {
 				show: false
 			},
-			data:[{value: 0.5, name: 'gas'}]
+			data:[{value: datax[2], name: 'gas'}]
 		},
 		{
 			name:'水表',
@@ -980,25 +996,27 @@ function imgthree(){
 			detail : {
 				show: false
 			},
-			data:[{value: 0.5, name: 'gas'}]
+			data:[{value: datax[3], name: 'gas'}]
 		}
 		]
 	};
+	if (x==1) {
+		var a=setInterval(function (){
+			otion.series[0].data[0].value = ((Math.random()*10)+40).toFixed(2);
+			otion.series[1].data[0].value = ((Math.random()*1)+1.5).toFixed(2);
+			otion.series[2].data[0].value = ((Math.random()*1)+0.5).toFixed(2);
+			otion.series[3].data[0].value = ((Math.random()*1)+0.5).toFixed(2);
+			myChart.setOption(otion);
+		},1000)
 
-	var a=setInterval(function (){
-		otion.series[0].data[0].value = ((Math.random()*10)+40).toFixed(2);
-		otion.series[1].data[0].value = ((Math.random()*1)+1.5).toFixed(2);
-		otion.series[2].data[0].value = ((Math.random()*1)+0.5).toFixed(2);
-		otion.series[3].data[0].value = ((Math.random()*1)+0.5).toFixed(2);
-		myChart.setOption(otion);
-	},1000)
-
+	}
+	
 
 
 	myChart.setOption(otion);
 };
 
-function imgfour(){
+function imgfour(datax){
 	var myChart = echarts.init(document.getElementById('imgfour'));
 
 	option = {
@@ -1063,7 +1081,7 @@ function imgfour(){
 		series: [
 		{
 			type: 'bar',
-			data: [32, 45,48, 52, 63, 70,75,80, 91],
+			data: [datax[0], datax[1],datax[2], datax[3], datax[4], datax[5],datax[6],datax[7], datax[8]],
 			itemStyle: {
 				normal: {
 					color: new echarts.graphic.LinearGradient(
