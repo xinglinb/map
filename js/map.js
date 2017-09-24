@@ -299,16 +299,16 @@ function map(){
 			data: convertData([
 				
 				
-				{name: "汕头", value: "合锻智能制造"},
-				{name: "昆山", value: "合锻智能制造"},
-				{name: "宁波", value: "合锻智能制造"},
-				{name: "湛江", value: "合锻智能制造"},
-				{name: "揭阳", value: "合锻智能制造"},
-				{name: "荣成", value: "合锻智能制造"},
-				{name: "合肥", value: "合锻智能制造"},
-				{name: "武汉", value: "合锻智能制造"},
-				{name: "大庆", value: "合锻智能制造"},
-				{name: "连云港", value: "合锻智能制造"},
+				{name: "汕头", value: "2"},
+				{name: "昆山", value: "3"},
+				{name: "宁波", value: "4"},
+				{name: "湛江", value: "5"},
+				{name: "揭阳", value: "2"},
+				{name: "荣成", value: "6"},
+				{name: "合肥", value: "7"},
+				{name: "武汉", value: "8"},
+				{name: "大庆", value: "5"},
+				{name: "连云港", value: "4"},
 				]),
 			symbolSize: 15,
 			label: {
@@ -377,10 +377,13 @@ function map(){
 	myChart.setOption(option);
 
 	myChart.on('click', function (params) {
-		var num = params.value;
+		var numA= params.value;
+		var numB;
+		if (params.value[2]>=0) {
+			numB = params.value[2];
+		};
 		var city = params.name;
-
-		if (num>0&&num<=10) {
+		if (numB>0&&numB<=10) {
 			$("#imgone").show();
 			$("#imgtwo").show();
 			$("#imgthree").show();
@@ -389,7 +392,7 @@ function map(){
 			$("#text-two").show();
 			var onex=[];
 			for (var i = 0; i < 5; i++) {
-				onex.push(((Math.random() * 100)+300).toFixed(0))
+				onex.push(((Math.random() * 100)+(30*i+180)).toFixed(0))
 			}
 			imgone(onex);
 			imgtwo(2);
@@ -401,7 +404,7 @@ function map(){
 			}
 			oney.sort(),
 			imgfour(oney);
-		}else if (num==0) {
+		}else if (numB==0) {
 			$("#imgone").hide();
 			$("#imgtwo").hide();
 			$("#imgthree").hide();
@@ -411,28 +414,31 @@ function map(){
 
 		}
 		
-		if (num>=0&&num<=10) {
+		if (numA>=0&&numA<=10) {
+			window.location.assign("analyse.html")
+			
+		}else{
 			$("#machine").html("")
-			if (num<3) {
-				for (var i = 0; i < num; i++) {
+			if (numB<3) {
+				for (var i = 0; i < numB; i++) {
 					$("#machine").append(
 						"<div class='simple col-lg-3'>"+
 						"<div class='panel panel-yes'>"+
 						"<div class='panel-heading'>"+
 						"<b>"+
-						"<span>"+city+"工大实验室</span>"+
+						"<span>设备"+(i+1)+"</span>"+
 						"<span class='pull-right'>——"+city+"</span>"+
 						"</b></div></div></div>"
 						)
 				}
 			}else{
-				for (var i = 0; i < num-2; i++) {
+				for (var i = 0; i < numB-2; i++) {
 					$("#machine").append(
 						"<div class='simple col-lg-3'>"+
 						"<div class='panel panel-yes'>"+
 						"<div class='panel-heading'>"+
 						"<b>"+
-						"<span>"+city+"工大实验室</span>"+
+						"<span>设备"+(i+1)+"</span>"+
 						"<span class='pull-right'>——"+city+"</span>"+
 						"</b></div></div></div>"
 						)
@@ -443,14 +449,12 @@ function map(){
 						"<div class='panel panel-no'>"+
 						"<div class='panel-heading'>"+
 						"<b>"+
-						"<span>"+city+"工大实验室</span>"+
+						"<span>设备"+(i+1)+"</span>"+
 						"<span class='pull-right'>——"+city+"</span>"+
 						"</b></div></div></div>"
 						)
 				}
 			}
-		}else{
-			window.location.assign("analyse.html")
 		}
 	});
 };
