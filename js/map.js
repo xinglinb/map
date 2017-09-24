@@ -26,8 +26,48 @@ window.onload=function(){
 		}
 		oney.sort(),
 		imgfour(oney);
-	})
-	
+	});
+
+	// $("#data-down").hover(function(){
+	// 	$("#data").fadeIn() 
+	// })
+
+	// $("#data").hover(function(){
+	// 	$("#data").fadeIn() 
+	// 	$("#data-down").css("color","rgba(255,255,255,1)");
+	// 	$("#data-down").css("background-color","rgba(0,0,0,0.3)");
+	// })
+
+	// $("#data").mouseout(function(){
+	// 	$("#data").fadeOut() 
+	// })
+
+	$("#data-down").on("click", function(e){
+		$("#data").fadeIn() ;
+
+		$(document).one("click", function(){
+			$("#data").fadeOut();
+		});
+
+		e.stopPropagation();
+	});
+	$("#data").on("click", function(e){
+		e.stopPropagation();
+	});
+
+	$("#data-down").hover(function(e){
+		$("#data").fadeIn() ;
+
+		$(document).one("click", function(){
+			$("#data").fadeOut();
+		});
+
+		e.stopPropagation();
+	});
+	$("#data").on("click", function(e){
+		e.stopPropagation();
+	});
+
 };
 
 
@@ -335,14 +375,14 @@ function map(){
 				{name: "沈阳", value: "4"},
 				]),
 			showEffectOn: 'render',
-            rippleEffect: {
-                brushType: 'stroke',
-                scale: 4
-            },
-            hoverAnimation: true,
+			rippleEffect: {
+				brushType: 'stroke',
+				scale: 4
+			},
+			hoverAnimation: true,
 			symbolSize: function (val) {
-                return val[2] * 3;
-            },
+				return val[2] * 3;
+			},
 			label: {
 				normal: {
 					show: false

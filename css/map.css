@@ -120,8 +120,43 @@ a:hover{
 /*左边第一行*/
 #text-one p{
 	margin-top: 15px;
-
+	padding-left: 70px;
 	padding-bottom: 10px
+}
+
+#text-one{
+	position: relative;
+}
+
+#data-down{
+	position: relative;
+	right: 0px;
+	top: -43px;
+	padding-left: 10px;
+	padding-right: 8px; 
+	padding-top: 3px;
+	cursor: pointer;
+	color: rgba(255,255,255,0.7);
+	background-color: rgba(0,0,0,0.4);
+}
+
+#data-down:hover{
+	color: rgba(255,255,255,1);
+}
+
+#data-down:hover #data{
+	display: block;
+}
+
+#data{
+	position: absolute;
+	background-color: rgba(0,0,0,0.3);
+	z-index: 500;
+	top: -10px;
+	left: -40px;
+	right: 0;
+	height: 960px;
+	display: none;
 }
 
 #imgone{
@@ -162,6 +197,3 @@ a:hover{
 	font-family: 楷体
 }
 
-/*#right .row .col-lg-5{
-	background-color: rgba(0,0,0,0.1);
-}*/
