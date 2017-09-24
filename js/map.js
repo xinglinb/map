@@ -5,8 +5,31 @@ window.onload=function(){
 	imgtwo(1);
 	imgthree([0,0,0,0],1);
 	imgfour([32, 45,48, 52, 63, 70,75,80, 91]);
+
+	// $(".simple").click(function(){
+		
+
+	// })
+
+	$("#machine").on('click','.simple',function(){
+		var onex=[];
+		for (var i = 0; i < 5; i++) {
+			onex.push(((Math.random() * 100)+(30*i+180)).toFixed(0))
+		}
+		imgone(onex);
+		imgtwo(2);
+		imgthree([0,0,0,0],2);
+
+		var oney=[];
+		for (var i = 0; i < 9; i++) {
+			oney.push(((Math.random() * 100)).toFixed(0))
+		}
+		oney.sort(),
+		imgfour(oney);
+	})
 	
 };
+
 
 function map(){
 	var myChart = echarts.init(document.getElementById('map'));
@@ -287,7 +310,7 @@ function map(){
 		series: [
 		{
 			name: '设备实况',
-			type: 'scatter',
+			type: 'effectScatter',
 			coordinateSystem: 'geo',
 			effect: {
 				show: true,
@@ -297,20 +320,29 @@ function map(){
 				symbolSize: 3
 			},
 			data: convertData([
-				
-				
-				{name: "汕头", value: "2"},
-				{name: "昆山", value: "3"},
+				{name: "乌鲁木齐", value: "2"},
+				{name: "成都", value: "2"},
+				{name: "贵阳", value: "3"},
 				{name: "宁波", value: "4"},
-				{name: "湛江", value: "5"},
+				{name: "太原", value: "5"},
 				{name: "揭阳", value: "2"},
-				{name: "荣成", value: "6"},
+				{name: "湘潭", value: "6"},
 				{name: "合肥", value: "7"},
 				{name: "武汉", value: "8"},
 				{name: "大庆", value: "5"},
 				{name: "连云港", value: "4"},
+				{name: "西安", value: "4"},
+				{name: "沈阳", value: "4"},
 				]),
-			symbolSize: 15,
+			showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke',
+                scale: 4
+            },
+            hoverAnimation: true,
+			symbolSize: function (val) {
+                return val[2] * 3;
+            },
 			label: {
 				normal: {
 					show: false
@@ -321,7 +353,7 @@ function map(){
 			},
 			itemStyle: {
 				normal: {
-					
+					color: 'rgba(194,53,49,0.8)'
 				},
 				emphasis: {
 					borderColor: '#fff',
@@ -383,36 +415,36 @@ function map(){
 			numB = params.value[2];
 		};
 		var city = params.name;
-		if (numB>0&&numB<=10) {
-			$("#imgone").show();
-			$("#imgtwo").show();
-			$("#imgthree").show();
-			$("#imgfour").show();
-			$("#text-one").show();
-			$("#text-two").show();
-			var onex=[];
-			for (var i = 0; i < 5; i++) {
-				onex.push(((Math.random() * 100)+(30*i+180)).toFixed(0))
-			}
-			imgone(onex);
-			imgtwo(2);
-			imgthree([0,0,0,0],2);
+		// if (numB>0&&numB<=10) {
+		// 	$("#imgone").show();
+		// 	$("#imgtwo").show();
+		// 	$("#imgthree").show();
+		// 	$("#imgfour").show();
+		// 	$("#text-one").show();
+		// 	$("#text-two").show();
+		// 	var onex=[];
+		// 	for (var i = 0; i < 5; i++) {
+		// 		onex.push(((Math.random() * 100)+(30*i+180)).toFixed(0))
+		// 	}
+		// 	imgone(onex);
+		// 	imgtwo(2);
+		// 	imgthree([0,0,0,0],2);
 
-			var oney=[];
-			for (var i = 0; i < 9; i++) {
-				oney.push(((Math.random() * 100)).toFixed(0))
-			}
-			oney.sort(),
-			imgfour(oney);
-		}else if (numB==0) {
-			$("#imgone").hide();
-			$("#imgtwo").hide();
-			$("#imgthree").hide();
-			$("#imgfour").hide();
-			$("#text-one").hide();
-			$("#text-two").hide();
+		// 	var oney=[];
+		// 	for (var i = 0; i < 9; i++) {
+		// 		oney.push(((Math.random() * 100)).toFixed(0))
+		// 	}
+		// 	oney.sort(),
+		// 	imgfour(oney);
+		// }else if (numB==0) {
+		// 	$("#imgone").hide();
+		// 	$("#imgtwo").hide();
+		// 	$("#imgthree").hide();
+		// 	$("#imgfour").hide();
+		// 	$("#text-one").hide();
+		// 	$("#text-two").hide();
 
-		}
+		// }
 		
 		if (numA>=0&&numA<=10) {
 			window.location.assign("analyse.html")
