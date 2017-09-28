@@ -1,9 +1,9 @@
 window.onload=function(){
 	leftOne ()
-	// leftTwoa()
+	leftTwoa()
 	leftTwoc()
-	rightOne()
-	rightTwo()
+	rightOne([11, 11, 14, 17, 12, 13],[16, 8, 3, 4, 10, 12],[2, 8, 6, 7, 5, 12],[1, 1, 2, 5, 3, 2])
+	rightTwo([1, 3, 4, 4, 6, 5,8],[4, 6, 7, 9, 10, 12,13],[7, 8, 10, 11, 14, 15,16],[10, 14, 15, 17, 18, 18,19],[8, 12, 14, 18, 19, 16,18],[5, 7, 12, 15, 16, 18,16],'°C')
 }
 
 function leftOne (){
@@ -277,86 +277,145 @@ function leftOne (){
 
 function leftTwoa(){
 	var myChart = echarts.init(document.getElementById('left-twoa'));
+	
 	option = {
 		title: {
-			text: '设备负荷情况',
-
-			left: 'center',
-			top: 0,
-			bottom:20,
-			textStyle: {
-				color: '#fff',
-				fontFamily:'楷体',
-				fontWeight:'100',
+			text: ''
+		},
+		tooltip: {},
+		animationDurationUpdate: 1500,
+		animationEasingUpdate: 'quinticInOut',
+		label: {
+			normal: {
+				show: true,
+				textStyle: {
+					fontSize: 18
+				},
 			}
 		},
-		tooltip : {
-			trigger: 'item',
-			formatter: "{a} <br/>{b} : {c} ({d}%)"
-		},
-		// legend: {
-		// 	orient: 'vertical',
-		// 	left: 'left',
-		// 	textStyle: {
-		// 		color: '#ffd285',
-		// 	},
-		// 	data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-		// },
-		series : [{
-			type: 'pie',
-			center: ['50%', '42%'],
-			radius: ['40%', '62%'],
-			name: '饼图',
-			tooltip: {
-				trigger: 'item',
-				formatter: "{a} <br/>{b} : {c} ({d}%)"
-			},
+		series: [
 
+		{
+			type: 'graph',
+			layout: 'force',
+			symbolSize: 88,
+			focusNodeAdjacency: true,
+			roam: true,
+			categories: [{
+				name: '',
+				itemStyle: {
+					normal: {
+						color: '#7ca25d',
+					}
+				}
+			}, {
+
+				itemStyle: {
+					normal: {
+						color: '#ffd285',
+					}
+				}
+			}, {
+
+				itemStyle: {
+					normal: {
+						color: '#ff733f',
+					}
+				}
+			},{
+
+				itemStyle: {
+					normal: {
+						color: '#ec4863',
+					}
+				}
+			}],
+			label: {
+				normal: {
+					show: true,
+					textStyle: {
+						fontSize: 15
+					},
+				}
+			},
+			force: {
+				repulsion: 5000
+			},
+			edgeSymbolSize: [20, 100],
+			edgeLabel: {
+				normal: {
+					show: true,
+					textStyle: {
+						fontSize: 10
+					},
+					formatter: "{c}"
+				}
+			},
 			data: [{
-				value: 335,
-				name: '直接访问',
-				itemStyle: {
-					normal: {
-						color: '#995da2'
-					}
-				}
+				name: '工厂1',
+				draggable: true,
+				category: 0,
 			}, {
-				value: 310,
-				name: '邮件营销',
-				itemStyle: {
-					normal: {
-						color: '#7ca25d'
-					}
-				}
+				name: '工厂2',
+				category: 1,
+				draggable: true,
 			}, {
-				value: 234,
-				name: '联盟广告',
-				itemStyle: {
-					normal: {
-						color: '#ffd285'
-					}
-				}
+				name: '工厂3',
+				category: 2,
+				draggable: true,
 			}, {
-				value: 135,
-				name: '视频广告',
-				itemStyle: {
-					normal: {
-						color: '#ff733f'
-					}
-				}
+				name: '工厂4',
+				category: 3,
+				draggable: true,
+			}],
+			links: [{
+				source: 0,
+				target: 1,
+				category: 0,
+				value: ''
+			},{
+				source: 0,
+				target: 3,
+				value: ''
 			}, {
-				value: 1548,
-				name: '搜索引擎',
-				itemStyle: {
-					normal: {
-						color: '#ec4863'
-					}
+				source: 1,
+				target: 2,
+				value: ''
+			}],
+			lineStyle: {
+				normal: {
+					opacity: 0.9,
+					width: 3,
+					height:5,
+					curveness: 0
 				}
-			}]
-		},
+			}
+		}
 		]
 	};
+
 	myChart.setOption(option);
+
+	myChart.on('click', function (params) {
+		var num= params.name;
+		var da=[];
+		var db=[];
+		var dc=[];
+		var dd=[];
+		for (var i = 0; i < 6; i++) {
+			da.push(((Math.random()*10)+3).toFixed(0));
+		};
+		for (var i = 0; i < 6; i++) {
+			db.push(((Math.random()*10)+3).toFixed(0));
+		};
+		for (var i = 0; i < 6; i++) {
+			dc.push(((Math.random()*10)+3).toFixed(0));
+		};
+		for (var i = 0; i < 6; i++) {
+			dd.push(((Math.random()*10)+3).toFixed(0));
+		};
+		rightOne(da,db,dc,dd)
+	})
 }
 
 function leftTwoc(){
@@ -431,7 +490,7 @@ function leftTwoc(){
 	myChart.setOption(option);
 }
 
-function rightOne(){
+function rightOne(da,db,dc,dd){
 	var myChart = echarts.init(document.getElementById('right-one'));
 
 	option = {
@@ -524,7 +583,7 @@ function rightOne(){
 		{
 			name:'状态1',
 			type: 'bar',
-			data:[11, 11, 14, 17, 12, 13],
+			data: da,
 			
 			itemStyle: {
 				normal: {
@@ -538,7 +597,7 @@ function rightOne(){
 		{
 			name:'状态2',
 			type: 'bar',
-			data:[16, 8, 3, 4, 10, 12],
+			data: db,
 			
 			itemStyle: {
 				normal: {
@@ -551,7 +610,7 @@ function rightOne(){
 		{
 			name:'状态3',
 			type: 'bar',
-			data:[2, 8, 6, 7, 5, 12],
+			data: dc,
 			
 			itemStyle: {
 				normal: {
@@ -564,7 +623,7 @@ function rightOne(){
 		{
 			name:'状态4',
 			type: 'bar',
-			data:[1, 1, 2, 5, 3, 2],
+			data:dd,
 			
 			itemStyle: {
 				normal: {
@@ -574,14 +633,45 @@ function rightOne(){
 			},
 		},
 		
-        ]
-    };
+		]
+	};
 
 
 	myChart.setOption(option);
+
+	myChart.on('click', function (params) {
+		var num= params.name;
+
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d6=[];
+		for (var i = 1; i < 8; i++) {
+			d1.push(((Math.random()*i)+2).toFixed(0));
+		};
+		for (var i = 1; i < 8; i++) {
+			d2.push(((Math.random()*i)+3).toFixed(0));
+		};
+		for (var i = 1; i < 8; i++) {
+			d3.push(((Math.random()*i)+4).toFixed(0));
+		};
+		for (var i = 1; i < 8; i++) {
+			d4.push(((Math.random()*i)+5).toFixed(0));
+		};
+		for (var i = 1; i < 8; i++) {
+			d5.push(((Math.random()*i)+6).toFixed(0));
+		};
+		for (var i = 1; i < 8; i++) {
+			d6.push(((Math.random()*i)+7).toFixed(0));
+		};
+
+		rightTwo(d1,d2,d3,d4,d5,d6,'°C')
+	})
 }
 
-function rightTwo(){
+function rightTwo(d1,d2,d3,d4,d5,d6,dxx){
 	var myChart = echarts.init(document.getElementById('right-two'));
 
 	option = {
@@ -602,7 +692,7 @@ function rightTwo(){
 			textStyle: {
 				color: '#ffd285',
 			},
-			data: ['状态1', '状态2', '状态3', '状态4', '状态5']
+			data: ['设备1', '设备2', '设备3', '设备4', '设备5','设备6']
 		},
 		tooltip: {
 			trigger: 'axis',
@@ -623,7 +713,7 @@ function rightTwo(){
 					color: '#ffd285'
 				}
 			},
-			data: ['9月1日','9月2日','9月3日','9月4日','9月5日','9月6日']
+			data: ['9月1日','9月2日','9月3日','9月4日','9月5日','9月6日','9月7日']
 		},
 		yAxis: [{
 			"axisLine": {
@@ -643,7 +733,8 @@ function rightTwo(){
 			axisLabel: {
 				textStyle: {
 					color: '#ffd285'
-				}
+				},
+				formatter: '{value}'+dxx
 			},
 			type: 'value'
 		},
@@ -672,9 +763,9 @@ function rightTwo(){
 		],
 		series: [
 		{
-			name:'状态1',
+			name:'设备1',
 			type:'line',
-			data:[1, 3, 4, 4, 6, 5],
+			data:d1,
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -683,10 +774,10 @@ function rightTwo(){
 
             },
         },
-		{
-			name:'状态2',
-			type:'line',
-			data:[4, 6, 7, 9, 10, 12],
+        {
+        	name:'设备2',
+        	type:'line',
+        	data:d2,
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -695,10 +786,10 @@ function rightTwo(){
 
             },
         },
-		{
-			name:'状态3',
-			type:'line',
-			data:[7, 8, 10, 11, 14, 15],
+        {
+        	name:'设备3',
+        	type:'line',
+        	data:d3,
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -707,10 +798,10 @@ function rightTwo(){
 
             },
         },
-		{
-			name:'状态4',
-			type:'line',
-			data:[10, 14, 15, 17, 18, 18],
+        {
+        	name:'设备4',
+        	type:'line',
+        	data:d4,
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -719,9 +810,33 @@ function rightTwo(){
 
             },
         },
+        {
+        	name:'设备5',
+        	type:'line',
+        	data:d5,
+            // smooth: true,
+            itemStyle: {
+            	normal: {
+            		color:'#575af0'
+            	}
+
+            },
+        },
+        {
+        	name:'设备6',
+        	type:'line',
+        	data:d6,
+            // smooth: true,
+            itemStyle: {
+            	normal: {
+            		color:'#cc54f3'
+            	}
+
+            },
+        },
         ]
     };
 
 
-	myChart.setOption(option);
+    myChart.setOption(option);
 }
