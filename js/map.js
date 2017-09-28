@@ -1,15 +1,19 @@
 window.onload=function(){
-
+	
 	map();
 	imgone([335,310,360,235,400]);
 	imgtwo(1);
 	imgthree([0,0,0,0],1);
 	imgfour([32, 45,48, 52, 63, 70,75,80, 91]);
-
-	// $(".simple").click(function(){
-		
-
-	// })
+	dataOne([25,75,82,42])
+	dataTwo([45,18,58])
+	dataThree([18,62,48])
+	dataFour([15])
+	dataFive([85])
+	dataSix([56])
+	$("#data").hide()
+	$("#data").css("opacity",1)
+	time()
 
 	$("#machine").on('click','.simple',function(){
 		var onex=[];
@@ -27,20 +31,6 @@ window.onload=function(){
 		oney.sort(),
 		imgfour(oney);
 	});
-
-	// $("#data-down").hover(function(){
-	// 	$("#data").fadeIn() 
-	// })
-
-	// $("#data").hover(function(){
-	// 	$("#data").fadeIn() 
-	// 	$("#data-down").css("color","rgba(255,255,255,1)");
-	// 	$("#data-down").css("background-color","rgba(0,0,0,0.3)");
-	// })
-
-	// $("#data").mouseout(function(){
-	// 	$("#data").fadeOut() 
-	// })
 
 	$("#data-down").on("click", function(e){
 		$("#data").fadeIn() ;
@@ -1120,12 +1110,12 @@ function imgfour(datax){
 				fontWeight:'100',
 			}
 		},
-		tooltip: {
-			trigger: 'axis',
-			axisPointer: {
-				type: 'shadow'
-			}
-		},
+		// tooltip: {
+		// 	trigger: 'axis',
+		// 	axisPointer: {
+		// 		type: 'shadow'
+		// 	}
+		// },
 		legend: {
 			data: ['2011年']
 		},
@@ -1193,3 +1183,659 @@ function imgfour(datax){
 	myChart.setOption(option);
 };
 
+function dataOne(dat){
+	var myChart = echarts.init(document.getElementById('data-one'));
+
+	var mainData = [];
+	mainData.push({
+		name: 'mm'+ '\n' +'滑块位移',
+		value: dat[0],
+		hismax: 100,
+		dcolor: '#7ca25d',
+		
+	});
+	mainData.push({
+		name: 'mm/s'+ '\n' +'滑块速度',
+		value: dat[1],
+		hismax: 100,
+		dcolor: '#ffd285',
+		
+	});
+	mainData.push({
+		name: 'mm'+ '\n' +'滑块上下极限',
+		value: dat[2],
+		hismax: 100,
+		dcolor: '#ff733f',
+		
+	});
+	mainData.push({
+		name: 'mm'+ '\n' +'滑块循环次数',
+		value: dat[3],
+		hismax: 100,
+		dcolor: '#ec4863',
+		
+	});
+
+	function createSeries(mainData) {
+		var result = [];
+		
+		var insideLabel = {
+			normal: {
+				position: 'center',
+				formatter: function(params) {
+					if (params.name == "other")
+						return "";
+					return params.value + params.name;
+				},
+				textStyle: {
+					fontStyle: 'normal',
+					fontWeight: 'normal',
+					fontSize: 14
+				}
+			}
+		};
+		var outsideLabel = {
+			normal: {
+				show: false
+			}
+		};
+		var itemOthers = {
+			normal: {
+				color: '#fff'
+			}
+		};
+		for (var i = 0; i < mainData.length; i++) {
+			
+			result.push({
+				type: 'pie',
+				center: [i * 25 + 10 + '%', '60%'],
+				radius: ['50%', '60%'],
+				label: insideLabel,
+				data: [{
+					name: 'other',
+					value: mainData[i].hismax - mainData[i].value,
+					itemStyle: itemOthers
+				}, {
+					name: mainData[i].name,
+					value: mainData[i].value,
+					itemStyle:{
+						normal: {
+							color: mainData[i].dcolor
+						}
+					} 
+				}],
+				
+			});
+		}
+		return result;
+	}
+	oa = {
+		title: {
+			text: '位移传感器',
+			textStyle: {
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
+				fontSize: '30'
+			},
+			x: 'left'
+		},
+		toolbox: {
+			show: true,
+			feature: {
+				dataView: {
+					show: true,
+					readOnly: true
+				},
+				restore: {
+					show: true
+				},
+				saveAsImage: {
+					show: true
+				}
+			}
+		},
+		series: createSeries(mainData)
+	}
+	myChart.setOption(oa);
+}
+
+function dataTwo(dat){
+	var myChart = echarts.init(document.getElementById('data-two'));
+
+	var mainData = [];
+	mainData.push({
+		name: '℃'+ '\n' +'电机温度',
+		value: dat[0],
+		hismax: 100,
+		dcolor: '#7ca25d',
+		
+	});
+	mainData.push({
+		name: 'N*M'+ '\n' +'电机转矩',
+		value: dat[1],
+		hismax: 100,
+		dcolor: '#ffd285',
+		
+	});
+	mainData.push({
+		name: 'R/MIN'+ '\n' +'电机转速',
+		value: dat[2],
+		hismax: 100,
+		dcolor: '#ff733f',
+		
+	});
+
+	function createSeries(mainData) {
+		var result = [];
+		
+		var insideLabel = {
+			normal: {
+				position: 'center',
+				formatter: function(params) {
+					if (params.name == "other")
+						return "";
+					return params.value + params.name;
+				},
+				textStyle: {
+					fontStyle: 'normal',
+					fontWeight: 'normal',
+					fontSize: 14
+				}
+			}
+		};
+		var outsideLabel = {
+			normal: {
+				show: false
+			}
+		};
+		var itemOthers = {
+			normal: {
+				color: '#fff'
+			}
+		};
+		for (var i = 0; i < mainData.length; i++) {
+			
+			result.push({
+				type: 'pie',
+				center: [i * 25 + 10 + '%', '60%'],
+				radius: ['50%', '60%'],
+				label: insideLabel,
+				data: [{
+					name: 'other',
+					value: mainData[i].hismax - mainData[i].value,
+					itemStyle: itemOthers
+				}, {
+					name: mainData[i].name,
+					value: mainData[i].value,
+					itemStyle:{
+						normal: {
+							color: mainData[i].dcolor
+						}
+					} 
+				}],
+				
+			});
+		}
+		return result;
+	}
+	ob = {
+		title: {
+			text: '伺服电机',
+			textStyle: {
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
+				fontSize: '30'
+			},
+			x: 'left'
+		},
+		toolbox: {
+			show: true,
+			feature: {
+				dataView: {
+					show: true,
+					readOnly: true
+				},
+				restore: {
+					show: true
+				},
+				saveAsImage: {
+					show: true
+				}
+			}
+		},
+		series: createSeries(mainData)
+	}
+	myChart.setOption(ob);
+}
+
+function dataThree(dat){
+	var myChart = echarts.init(document.getElementById('data-three'));
+
+	var mainData = [];
+	mainData.push({
+		name: 'MPa'+ '\n' +'泵出口油压',
+		value: dat[0],
+		hismax: 100,
+		dcolor: '#7ca25d',
+		
+	});
+	mainData.push({
+		name: 'MPa'+ '\n' +'液压缸无杆'+ '\n' +'腔油压',
+		value: dat[1],
+		hismax: 100,
+		dcolor: '#ffd285',
+		
+	});
+	mainData.push({
+		name: 'MPa'+ '\n' +'液压缸有杆'+ '\n' +'腔油压',
+		value: dat[2],
+		hismax: 100,
+		dcolor: '#ff733f',
+		
+	});
+
+	function createSeries(mainData) {
+		var result = [];
+		
+		var insideLabel = {
+			normal: {
+				position: 'center',
+				formatter: function(params) {
+					if (params.name == "other")
+						return "";
+					return params.value + params.name;
+				},
+				textStyle: {
+					fontStyle: 'normal',
+					fontWeight: 'normal',
+					fontSize: 14
+				}
+			}
+		};
+		var outsideLabel = {
+			normal: {
+				show: false
+			}
+		};
+		var itemOthers = {
+			normal: {
+				color: '#fff'
+			}
+		};
+		for (var i = 0; i < mainData.length; i++) {
+			
+			result.push({
+				type: 'pie',
+				center: [i * 25 + 10 + '%', '60%'],
+				radius: ['50%', '60%'],
+				label: insideLabel,
+				data: [{
+					name: 'other',
+					value: mainData[i].hismax - mainData[i].value,
+					itemStyle: itemOthers
+				}, {
+					name: mainData[i].name,
+					value: mainData[i].value,
+					itemStyle:{
+						normal: {
+							color: mainData[i].dcolor
+						}
+					} 
+				}],
+				
+			});
+		}
+		return result;
+	}
+	oc = {
+		title: {
+			text: '压力传感器',
+			textStyle: {
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
+				fontSize: '30'
+			},
+			x: 'left'
+		},
+		toolbox: {
+			show: true,
+			feature: {
+				dataView: {
+					show: true,
+					readOnly: true
+				},
+				restore: {
+					show: true
+				},
+				saveAsImage: {
+					show: true
+				}
+			}
+		},
+		series: createSeries(mainData)
+	}
+	myChart.setOption(oc);
+}
+
+function dataFour(dat){
+	var myChart = echarts.init(document.getElementById('data-four'));
+
+	var mainData = [];
+	mainData.push({
+		name: 'KN'+ '\n' +'滑块输出力',
+		value: dat[0],
+		hismax: 100,
+		dcolor: '#7ca25d',
+		
+	});
+
+	function createSeries(mainData) {
+		var result = [];
+		
+		var insideLabel = {
+			normal: {
+				position: 'center',
+				formatter: function(params) {
+					if (params.name == "other")
+						return "";
+					return params.value + params.name;
+				},
+				textStyle: {
+					fontStyle: 'normal',
+					fontWeight: 'normal',
+					fontSize: 14
+				}
+			}
+		};
+		var outsideLabel = {
+			normal: {
+				show: false
+			}
+		};
+		var itemOthers = {
+			normal: {
+				color: '#fff'
+			}
+		};
+		for (var i = 0; i < mainData.length; i++) {
+			
+			result.push({
+				type: 'pie',
+				center: ['20%', '60%'],
+				radius: ['50%', '60%'],
+				label: insideLabel,
+				data: [{
+					name: 'other',
+					value: mainData[i].hismax - mainData[i].value,
+					itemStyle: itemOthers
+				}, {
+					name: mainData[i].name,
+					value: mainData[i].value,
+					itemStyle:{
+						normal: {
+							color: mainData[i].dcolor
+						}
+					} 
+				}],
+				
+			});
+		}
+		return result;
+	}
+	od = {
+		title: {
+			text: '力传感器',
+			textStyle: {
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
+				fontSize: '30'
+			},
+			x: 'left'
+		},
+		toolbox: {
+			show: true,
+			feature: {
+				dataView: {
+					show: true,
+					readOnly: true
+				},
+				restore: {
+					show: true
+				},
+				saveAsImage: {
+					show: true
+				}
+			}
+		},
+		series: createSeries(mainData)
+	}
+	myChart.setOption(od);
+}
+
+function dataFive(dat){
+	var myChart = echarts.init(document.getElementById('data-five'));
+
+	var mainData = [];
+	mainData.push({
+		name: '℃'+ '\n' +'液压油温度',
+		value: dat[0],
+		hismax: 100,
+		dcolor: '#ff733f',
+		
+	});
+
+	function createSeries(mainData) {
+		var result = [];
+		
+		var insideLabel = {
+			normal: {
+				position: 'center',
+				formatter: function(params) {
+					if (params.name == "other")
+						return "";
+					return params.value + params.name;
+				},
+				textStyle: {
+					fontStyle: 'normal',
+					fontWeight: 'normal',
+					fontSize: 14
+				}
+			}
+		};
+		var outsideLabel = {
+			normal: {
+				show: false
+			}
+		};
+		var itemOthers = {
+			normal: {
+				color: '#fff'
+			}
+		};
+		for (var i = 0; i < mainData.length; i++) {
+			
+			result.push({
+				type: 'pie',
+				center: ['20%', '60%'],
+				radius: ['50%', '60%'],
+				label: insideLabel,
+				data: [{
+					name: 'other',
+					value: mainData[i].hismax - mainData[i].value,
+					itemStyle: itemOthers
+				}, {
+					name: mainData[i].name,
+					value: mainData[i].value,
+					itemStyle:{
+						normal: {
+							color: mainData[i].dcolor
+						}
+					} 
+				}],
+				
+			});
+		}
+		return result;
+	}
+	oe = {
+		title: {
+			text: '温油传感器',
+			textStyle: {
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
+				fontSize: '30'
+			},
+			x: 'left'
+		},
+		toolbox: {
+			show: true,
+			feature: {
+				dataView: {
+					show: true,
+					readOnly: true
+				},
+				restore: {
+					show: true
+				},
+				saveAsImage: {
+					show: true
+				}
+			}
+		},
+		series: createSeries(mainData)
+	}
+	myChart.setOption(oe);
+}
+
+function dataSix(dat){
+	var myChart = echarts.init(document.getElementById('data-six'));
+
+	var mainData = [];
+	mainData.push({
+		name: 'mm'+ '\n' +'液压油液位',
+		value: dat[0],
+		hismax: 100,
+		dcolor: '#7ca25d',
+		
+	});
+
+	function createSeries(mainData) {
+		var result = [];
+		
+		var insideLabel = {
+			normal: {
+				position: 'center',
+				formatter: function(params) {
+					if (params.name == "other")
+						return "";
+					return params.value + params.name;
+				},
+				textStyle: {
+					fontStyle: 'normal',
+					fontWeight: 'normal',
+					fontSize: 14
+				}
+			}
+		};
+		var outsideLabel = {
+			normal: {
+				show: false
+			}
+		};
+		var itemOthers = {
+			normal: {
+				color: '#fff'
+			}
+		};
+		for (var i = 0; i < mainData.length; i++) {
+			
+			result.push({
+				type: 'pie',
+				center: ['20%', '60%'],
+				radius: ['50%', '60%'],
+				label: insideLabel,
+				data: [{
+					name: 'other',
+					value: mainData[i].hismax - mainData[i].value,
+					itemStyle: itemOthers
+				}, {
+					name: mainData[i].name,
+					value: mainData[i].value,
+					itemStyle:{
+						normal: {
+							color: mainData[i].dcolor
+						}
+					} 
+				}],
+				
+			});
+		}
+		return result;
+	}
+	og = {
+		title: {
+			text: '液位传感器',
+			textStyle: {
+				color: '#fff',
+				fontFamily:'楷体',
+				fontWeight:'100',
+				fontSize: '30'
+			},
+			x: 'left'
+		},
+		toolbox: {
+			show: true,
+			feature: {
+				dataView: {
+					show: true,
+					readOnly: true
+				},
+				restore: {
+					show: true
+				},
+				saveAsImage: {
+					show: true
+				}
+			}
+		},
+		series: createSeries(mainData)
+	}
+	myChart.setOption(og);
+}
+
+function time(){
+	setInterval(function (){
+		
+		var data0 = [];
+		var data1 = [];
+		var data2 = [];
+		var data3 = [];
+		var data4 = [];
+		var data5 = [];
+		for (var i = 0; i < 4; i++) {
+			data0.push(((Math.random()*10)+40).toFixed(0));
+		};
+		for (var i = 0; i < 3; i++) {
+			data1.push(((Math.random()*10)+40).toFixed(0));
+		};
+		for (var i = 0; i < 3; i++) {
+			data2.push(((Math.random()*10)+40).toFixed(0));
+		};
+		data3.push(((Math.random()*10)+40).toFixed(0));
+		data4.push(((Math.random()*10)+40).toFixed(0));
+		data5.push(((Math.random()*10)+40).toFixed(0));
+
+		dataOne(data0);
+		dataTwo(data1);
+		dataThree(data2);
+		dataFour(data3);
+		dataFive(data4);
+		dataSix(data5);
+
+	}, 1000);
+}

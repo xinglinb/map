@@ -9,53 +9,123 @@ a:hover{
 }
 
 
-#right{
+#bac{
 	position: absolute;
 	right: 0;
 	bottom: 0;
 	top: 0;
 	left: 0;
 	position: fixed;
-	/*background-color: #404a59;*/
-	background-color: #1c6397;
-	background-size:100% 100%;
-	background-image: url(../images/bac.jpg);
+	background-color: #404a59;
 }
 
 
-#right .con{
+#con{
 	width: 100%;
-	margin-top: 20px;
+	height: 100%;
+	position: relative;
 	
 }
-#right .con .row{
-	padding: 0;
-	margin: 0;
 
-}
-
-
-
-#right .con .row .panel{
-	line-height: 1.8;
-	border: #404a59;
-	color: #fff
-}
 
 #top{
 	z-index: 100;
 	color: #fff;
 	text-align: center;
-	height: 60px;
+	width: 100%;
+	height: 90px;
+	padding-top: 25px;
 	font-size: 35px
 }
 
-#top span{
+#top a{
 	float: left;
-	padding-left: 10px;
+	padding-left: 20px;
 	cursor: pointer;
+	line-height: 70px;
+	color: #2d343d
 }
 
-#top img{
-	margin-left: 70px
+#top a:hover{
+	color: #dadaff
+}
+
+#top #title{
+	float: left;
+	padding-left: 10px;
+	font-family: 楷体;
+	position: relative;
+	left: 50%;
+	margin-left: -350px;
+	font-size: 50px
+}
+
+
+#left{
+	width: 70%;
+	position: absolute;
+	top: 100px;
+	bottom: 30px;
+	padding: 20px
+}
+
+#left-row{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	
+}
+
+#left-one{
+	position: relative;
+	/*top: 0;
+	bottom: 300px;
+	left: 0;
+	right: 0;*/
+	height: 65%;
+	width: 100%;
+	float: left;
+
+}
+
+#left-two{
+	width: 100%;
+	height: 50%;
+	float: left;
+	position: relative;
+}
+
+#left-twoa{
+	float: left;
+	width: 33%;
+	height: 100%;
+}
+
+#left-twob{
+	float: left;
+	width: 28%;
+	height: 85%;
+	margin-left: 2%;
+}
+
+#left-twoc{
+	float: left;
+	width: 30%;
+	height: 80%;
+	margin-left: 2%;
+}
+
+#right-one,#right-two{
+	width: 100%;
+	float: left;
+	height: 50%;
+}
+
+#right{
+	width: 35%;
+	position: absolute;
+	right: 0;
+	top: 100px;
+	bottom: 30px;
+	padding: 20px
 }
