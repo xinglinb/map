@@ -1,9 +1,30 @@
 window.onload=function(){
 	leftOne ()
-	leftTwoa()
+	// leftTwoa()
 	leftTwoc()
 	rightOne([11, 11, 14, 17, 12, 13],[16, 8, 3, 4, 10, 12],[2, 8, 6, 7, 5, 12],[1, 1, 2, 5, 3, 2])
 	rightTwo([1, 3, 4, 4, 6, 5,8],[4, 6, 7, 9, 10, 12,13],[7, 8, 10, 11, 14, 15,16],[10, 14, 15, 17, 18, 18,19],[8, 12, 14, 18, 19, 16,18],[5, 7, 12, 15, 16, 18,16],'°C')
+
+	$(".panel-heading").click(function(){
+		var da=[];
+		var db=[];
+		var dc=[];
+		var dd=[];
+		for (var i = 0; i < 6; i++) {
+			da.push(((Math.random()*10)+3).toFixed(0));
+		};
+		for (var i = 0; i < 6; i++) {
+			db.push(((Math.random()*10)+3).toFixed(0));
+		};
+		for (var i = 0; i < 6; i++) {
+			dc.push(((Math.random()*10)+3).toFixed(0));
+		};
+		for (var i = 0; i < 6; i++) {
+			dd.push(((Math.random()*10)+3).toFixed(0));
+		};
+		rightOne(da,db,dc,dd)
+	})
+
 }
 
 function leftOne (){
@@ -27,7 +48,7 @@ function leftOne (){
 			textStyle: {
 				color: '#ffd285',
 			},
-			data: ['状态1', '状态2', '状态3', '状态4', '状态5']
+			data: ['工厂1', '工厂2', '工厂3', '工厂4']
 		},
 		dataZoom: [
 		{	
@@ -88,31 +109,8 @@ function leftOne (){
 			type: 'value'
 		},
 		series: [
-		// {
-		// 	name:'状态1',
-		// 	type: 'bar',
-		// 	data:[11, 11, 14, 17, 12, 13, 10,9,7,14],
-		// 	markPoint: {
-		// 		data: [
-		// 		{type: 'max', name: '最大值'},
-		// 		{type: 'min', name: '最小值'}
-		// 		]
-		// 	},
-		// 	markLine: {
-		// 		data: [
-		// 		{type: 'average', name: '平均值'}
-		// 		]
-		// 	},
-		// 	itemStyle: {
-		// 		normal: {
-		// 			color:'#7ca25d'
-		// 		}
-
-		// 	},
-
-		// },
 		{
-			name:'状态1',
+			name:'工厂1',
 			type:'line',
 			data:[11, 11, 14, 17, 12, 13, 10,1,5,10],
             // smooth: true,
@@ -134,32 +132,10 @@ function leftOne (){
             	]
             },
         },
-		// {
-		// 	name:'状态2',
-		// 	type: 'bar',
-		// 	data:[16, 8, 3, 4, 10, 12, 14,14,8,12],
-		// 	markPoint: {
-		// 		data: [
-		// 		{type: 'max', name: '最大值'},
-		// 		{type: 'min', name: '最小值'}
-		// 		]
-		// 	},
-		// 	markLine: {
-		// 		data: [
-		// 		{type: 'average', name: '平均值'}
-		// 		]
-		// 	},
-		// 	itemStyle: {
-		// 		normal: {
-		// 			color:'#ffd285'
-		// 		}
-
-		// 	},
-		// },
-		{
-			name:'状态2',
-			type:'line',
-			data:[16, 8, 3, 4, 10, 12, 8,14,10,12],
+        {
+        	name:'工厂2',
+        	type:'line',
+        	data:[16, 8, 3, 4, 10, 12, 8,14,10,12],
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -179,32 +155,10 @@ function leftOne (){
             	]
             },
         },
-		// {
-		// 	name:'状态3',
-		// 	type: 'bar',
-		// 	data:[2, 8, 6, 7, 5, 12, 13,11,9,5],
-		// 	markPoint: {
-		// 		data: [
-		// 		{type: 'max', name: '最大值'},
-		// 		{type: 'min', name: '最小值'}
-		// 		]
-		// 	},
-		// 	markLine: {
-		// 		data: [
-		// 		{type: 'average', name: '平均值'}
-		// 		]
-		// 	},
-		// 	itemStyle: {
-		// 		normal: {
-		// 			color:'#ff733f'
-		// 		}
-
-		// 	},
-		// },
-		{
-			name:'状态3',
-			type:'line',
-			data:[2, 8, 6, 7, 5, 12, 5,17,9,5],
+        {
+        	name:'工厂3',
+        	type:'line',
+        	data:[2, 8, 6, 7, 5, 12, 5,17,9,5],
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -224,32 +178,10 @@ function leftOne (){
             	]
             },
         },
-		// {
-		// 	name:'状态4',
-		// 	type: 'bar',
-		// 	data:[1, 1, 2, 5, 3, 2, 10,12,9,7],
-		// 	markPoint: {
-		// 		data: [
-		// 		{type: 'max', name: '最大值'},
-		// 		{type: 'min', name: '最小值'}
-		// 		]
-		// 	},
-		// 	markLine: {
-		// 		data: [
-		// 		{type: 'average', name: '平均值'}
-		// 		]
-		// 	},
-		// 	itemStyle: {
-		// 		normal: {
-		// 			color:'#ec4863'
-		// 		}
-
-		// 	},
-		// },
-		{
-			name:'状态4',
-			type:'line',
-			data:[1, 1, 2, 5, 3, 2, 10,12,9,7],
+        {
+        	name:'工厂4',
+        	type:'line',
+        	data:[1, 1, 2, 5, 3, 2, 10,12,9,7],
             // smooth: true,
             itemStyle: {
             	normal: {

@@ -286,16 +286,16 @@ function map(){
 				return params.name + ' : ' + params.value[2];
 			}
 		},
-		legend: {
-			orient: 'vertical',
-			y: 'bottom',
-			x:'right',
-			data:['设备实况'],
-			textStyle: {
-				color: '#fff'
-			},
-			calculable : true
-		},
+		// legend: {
+		// 	orient: 'vertical',
+		// 	y: 'bottom',
+		// 	x:'right',
+		// 	data:['设备实况'],
+		// 	textStyle: {
+		// 		color: '#fff'
+		// 	},
+		// 	calculable : true
+		// },
 		visualMap: {
 			min: 0,
 			max: 10,
