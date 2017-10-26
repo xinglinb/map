@@ -853,7 +853,7 @@ function imgtwo(x){
 			scale: true,
 			name: '利用率',
 			max: 100,
-			min: 0,
+			min: 70,
 			boundaryGap: [0.2, 0.2],
 			axisLabel: {
 				textStyle: {
@@ -872,7 +872,7 @@ function imgtwo(x){
 			scale: true,
 			name: '负荷',
 			max: 100,
-			min: 0,
+			min: 70,
 			boundaryGap: [0.2, 0.2],
 			axisLabel: {
 				textStyle: {

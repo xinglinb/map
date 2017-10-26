@@ -29,7 +29,16 @@ window.onload=function(){
 
 function leftOne (){
 	var myChart = echarts.init(document.getElementById('left-one'));
-
+	dataa=[];
+	datab=[];
+	datac=[];
+	datad=[];
+	for (var i = 0; i < 10; i++) {
+		dataa.push(Math.round((Math.random() * 8)+89));
+		datab.push(Math.round((Math.random() * 8)+89));
+		datac.push(Math.round((Math.random() * 8)+89));
+		datad.push(Math.round((Math.random() * 8)+89));
+	}
 	option = {
 		title: {
 			text: '地区设备运营分析',
@@ -87,6 +96,11 @@ function leftOne (){
 			data: ['2017年1月','2017年2月','2017年3月','2017年4月','2017年5月','2017年6月','2017年7月','2017年8月','2017年9月','2017年10月']
 		},
 		yAxis: {
+			type: 'value',
+			scale: true,
+			name: '设备完好率',
+			max: 99,
+			min: 85,
 			"axisLine": {
 				lineStyle: {
 					color: '#c0576d'
@@ -104,7 +118,8 @@ function leftOne (){
 			axisLabel: {
 				textStyle: {
 					color: '#ffd285'
-				}
+				},
+				formatter: '{value}'+'%'
 			},
 			type: 'value'
 		},
@@ -112,7 +127,7 @@ function leftOne (){
 		{
 			name:'工厂1',
 			type:'line',
-			data:[11, 11, 14, 17, 12, 13, 10,1,5,10],
+			data:dataa,
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -135,7 +150,7 @@ function leftOne (){
         {
         	name:'工厂2',
         	type:'line',
-        	data:[16, 8, 3, 4, 10, 12, 8,14,10,12],
+        	data:datab,
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -158,7 +173,7 @@ function leftOne (){
         {
         	name:'工厂3',
         	type:'line',
-        	data:[2, 8, 6, 7, 5, 12, 5,17,9,5],
+        	data:datac,
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -181,7 +196,7 @@ function leftOne (){
         {
         	name:'工厂4',
         	type:'line',
-        	data:[1, 1, 2, 5, 3, 2, 10,12,9,7],
+        	data:datad,
             // smooth: true,
             itemStyle: {
             	normal: {
@@ -367,12 +382,12 @@ function leftTwoc(){
 				}
 			},
 			indicator: [
-			{ name: '销售', max: 6500},
-			{ name: '管理', max: 16000},
-			{ name: '信息技术', max: 30000},
-			{ name: '客服', max: 38000},
-			{ name: '研发', max: 52000},
-			{ name: '市场', max: 25000}
+			{ name: '开工率', max: 6500},
+			{ name: '故障率', max: 16000},
+			{ name: '负荷率', max: 30000},
+			{ name: '停机率', max: 38000},
+			{ name: '修理效率', max: 52000},
+			{ name: '利用率', max: 25000}
 			]
 		},
 		series: [{
@@ -443,7 +458,7 @@ function rightOne(da,db,dc,dd){
 			textStyle: {
 				color: '#ffd285',
 			},
-			data: ['状态1', '状态2', '状态3', '状态4', '状态5']
+			data: ['开工率', '故障率', '负荷率', '利用率']
 		},
 		tooltip: {
 			trigger: 'axis',
@@ -513,7 +528,7 @@ function rightOne(da,db,dc,dd){
 		],
 		series: [
 		{
-			name:'状态1',
+			name:'开工率',
 			type: 'bar',
 			data: da,
 			
@@ -527,7 +542,7 @@ function rightOne(da,db,dc,dd){
 		},
 		
 		{
-			name:'状态2',
+			name:'故障率',
 			type: 'bar',
 			data: db,
 			
@@ -540,7 +555,7 @@ function rightOne(da,db,dc,dd){
 		},
 		
 		{
-			name:'状态3',
+			name:'负荷率',
 			type: 'bar',
 			data: dc,
 			
@@ -553,7 +568,7 @@ function rightOne(da,db,dc,dd){
 		},
 		
 		{
-			name:'状态4',
+			name:'利用率',
 			type: 'bar',
 			data:dd,
 			
