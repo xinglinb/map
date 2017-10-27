@@ -714,19 +714,6 @@ function imgone(datax){
 			formatter: "{b} :{d}%"
 		},
 
-		toolbox: {
-			show : true,
-			feature : {
-				mark : {show: true},
-				dataView : {show: true, readOnly: false},
-				magicType : {
-					show: true,
-					type: ['pie', 'funnel']
-				},
-				restore : {show: true},
-				saveAsImage : {show: true}
-			}
-		},
 		calculable : true,
 		series : [
 		{
@@ -734,7 +721,7 @@ function imgone(datax){
 			type:'pie',
 			radius : '55%',
 			center: ['50%', '50%'],
-			color: ['#601b19', '#882422', '#ad2f2c', '#c23531','#d76662'],
+			color: ['#d13733', '#882422', '#ad2f2c', '#c23531','#d76662'],
 			data:[
 			{value:datax[4], name:'故障检测时间'},
 			{value:datax[3], name:'故障停工时间'},
