@@ -94,6 +94,10 @@ a:hover{
 }
 
 /*机器*/
+
+#machine{
+	width: 103%;
+}
 .simple{
 	cursor: pointer;
 }

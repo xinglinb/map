@@ -114,7 +114,7 @@ function map(){
 		"丹东":[124.37,40.13],
 		"太仓":[121.1,31.45],
 		"来达隔热隔音汽车零部件有限公司":[121.8,31.45],
-		"欧拓防音配件有限公司太仓分公司":[121,31.45],
+		"欧拓防音配件有限公司太仓公司":[121,31.45],
 		"曲靖":[103.79,25.51],
 		"烟台":[121.39,37.52],
 		"烟台埃密斯精密锻造有限公司":[121.39,37.52],
@@ -224,7 +224,7 @@ function map(){
 		"宜兴":[119.82,31.36],
 		"江苏富陶车辆部件有限公司":[119.82,31.36],
 		"北海":[109.12,21.49],
-		"广西钦州力顺机械有限公司":[107.8,21.49],
+		"广西钦州力顺机械有限公司":[108,21.8],
 		"西安":[108.95,34.27],
 		"金坛":[119.56,31.74],
 		"东营":[118.49,37.46],
@@ -486,7 +486,7 @@ function map(){
 				{name: "上海爱德航汽车部件制造有限公司", value: "3"},
 				{name: "上海航天设备制造总厂", value: "3"},
 				{name: "浙江吉润汽车部件有限公司", value: "2"},
-				{name: "欧拓防音配件有限公司太仓分公司", value: "3"},
+				{name: "欧拓防音配件有限公司太仓公司", value: "3"},
 				{name: "日特固防音配件有限公司", value: "2"},
 				{name: "湖南猎豹汽车股份有限公司", value: "3"},
 				{name: "南京国际船舶设备配件有限公司", value: "2"},
@@ -624,7 +624,8 @@ function map(){
 						"<div class='panel panel-yes'>"+
 						"<div class='panel-heading'>"+
 						"<b>"+
-						"<span>"+city+"</span>"+
+						"<span>"+(i+1)+"</span>"+
+						"<span class='pull-right'>"+city+"</span>"+
 						"</b></div></div></div>"
 						)
 				}
@@ -635,7 +636,8 @@ function map(){
 						"<div class='panel panel-yes'>"+
 						"<div class='panel-heading'>"+
 						"<b>"+
-						"<span>"+city+"</span>"+
+						"<span>"+(i+1)+"</span>"+
+						"<span class='pull-right'>"+city+"</span>"+
 						"</b></div></div></div>"
 						)
 				};
@@ -645,7 +647,8 @@ function map(){
 						"<div class='panel panel-no'>"+
 						"<div class='panel-heading'>"+
 						"<b>"+
-						"<span>"+city+"</span>"+
+						"<span>"+(numB-1+i)+"</span>"+
+						"<span class='pull-right'>"+city+"</span>"+
 						"</b></div></div></div>"
 						)
 				}
@@ -656,7 +659,8 @@ function map(){
 						"<div class='panel panel-yes'>"+
 						"<div class='panel-heading'>"+
 						"<b>"+
-						"<span>"+city+"</span>"+
+						"<span>"+(i+1)+"</span>"+
+						"<span class='pull-right'>"+city+"</span>"+
 						"</b></div></div></div>"
 						)
 				};
@@ -666,7 +670,8 @@ function map(){
 						"<div class='panel panel-no'>"+
 						"<div class='panel-heading'>"+
 						"<b>"+
-						"<span>"+city+"</span>"+
+						"<span>"+(numB-1+i)+"</span>"+
+						"<span class='pull-right'>"+city+"</span>"+
 						"</b></div></div></div>"
 						)
 				}
@@ -706,61 +711,71 @@ function imgone(datax){
 
 		tooltip : {
 			trigger: 'item',
-			formatter: "{a} <br/>{b} : {c} ({d}%)"
+			formatter: "{b} :{d}%"
 		},
 
-		visualMap: {
-			show: false,
-			min: 0,
-			max: 100,
-			inRange: {
-				colorLightness: [0, 1]
+		toolbox: {
+			show : true,
+			feature : {
+				mark : {show: true},
+				dataView : {show: true, readOnly: false},
+				magicType : {
+					show: true,
+					type: ['pie', 'funnel']
+				},
+				restore : {show: true},
+				saveAsImage : {show: true}
 			}
 		},
+		calculable : true,
 		series : [
 		{
 			name:'合肥工大实验室',
 			type:'pie',
 			radius : '55%',
 			center: ['50%', '50%'],
+			color: ['#601b19', '#882422', '#ad2f2c', '#c23531','#d76662'],
 			data:[
-			{value:datax[0], name:'开工率'},
-			{value:datax[1], name:'在线率'},
-			{value:datax[2], name:'故障维修时间'},
+			{value:datax[4], name:'故障检测时间'},
 			{value:datax[3], name:'故障停工时间'},
-			{value:datax[4], name:'故障检测时间'}
-			].sort(function (a, b) { return a.value - b.value; }),
-			roseType: 'radius',
-			label: {
-				normal: {
-					textStyle: {
-						color: '#fff'
-					}
-				}
-			},
-			labelLine: {
-				normal: {
-					lineStyle: {
-						color: '#fff'
-					},
-					smooth: 0.3,
-					length: 10,
-					length2: 20
-				}
-			},
+			{value:datax[2], name:'故障维修时间'},
+			{value:datax[1], name:'在线率'},
+			{value:datax[0], name:'开工率'},
+			],
 			itemStyle: {
 				normal: {
-					color: '#5a0200',
-					shadowBlur: 100,
+                    
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                },
+				emphasis: {
+					shadowBlur: 10,
+					shadowOffsetX: 0,
 					shadowColor: 'rgba(0, 0, 0, 0.5)'
 				}
 			},
-
-			animationType: 'scale',
-			animationEasing: 'elasticOut',
-			animationDelay: function (idx) {
-				return Math.random() * 100;
-			}
+			label: {
+                normal: {
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    }
+                }
+            },
+			labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    },
+                    smooth: 0.2,
+                    length: 20,
+                    length2: 30
+                }
+            },
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) {
+                return Math.random() * 200;
+            }
 		}
 		]
 	};

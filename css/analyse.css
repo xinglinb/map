@@ -157,7 +157,18 @@ a:hover{
 	opacity: 1;
 }
 
+#left .simple #panel-five .panel-heading{
+	background-color: #5c91c0;
+	opacity: 0.9;
+	border:solid #5c91c0;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+}
 
+#left .simple #panel-five .panel-heading:hover{
+	opacity: 1;
+}
 
 #left-twoc{
 	float: left;
@@ -179,4 +190,59 @@ a:hover{
 	top: 100px;
 	bottom: 30px;
 	padding: 20px
+}
+
+
+#changeTwo{
+	position: absolute;
+	z-index: 1000;
+	top:50%;
+	left: 50%;
+	margin-top: -25px;
+	margin-left: -170px
+}
+
+#changeTwo .cbox{
+	float: left;
+	width: 30px;
+	height: 15px;
+	border-radius: 5px;
+	margin-left: 8px;
+	cursor: pointer;
+}
+
+#cboxOne{
+	background-color: #7ca25d;
+}
+#cboxOne:hover{
+	opacity: 1
+}
+
+#cboxTwo{
+	background-color: #ffd285;
+}
+#cboxTwo:hover{
+	opacity: 1
+}
+
+#cboxThree{
+	background-color: #ff733f;
+}
+#cboxThree:hover{
+	opacity: 1
+}
+
+#cboxFour{
+	background-color: #ec4863;
+}
+#cboxFour:hover{
+	opacity: 1
+}
+
+#changeTwo span{
+	float: left;
+	margin-left: 4px;
+	font-size: 12px;
+	color: #ffd285;
+	cursor: pointer;
 }

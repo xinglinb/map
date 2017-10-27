@@ -1,31 +1,37 @@
 window.onload=function(){
 	leftOne ()
-	// leftTwoa()
 	leftTwoc()
-	rightOne([11, 11, 14, 17, 12, 13],[16, 8, 3, 4, 10, 12],[2, 8, 6, 7, 5, 12],[1, 1, 2, 5, 3, 2])
-	rightTwo([1, 3, 4, 4, 6, 5,8],[4, 6, 7, 9, 10, 12,13],[7, 8, 10, 11, 14, 15,16],[10, 14, 15, 17, 18, 18,19],[8, 12, 14, 18, 19, 16,18],[5, 7, 12, 15, 16, 18,16],'°C')
-
-	$(".panel-heading").click(function(){
-		var da=[];
-		var db=[];
-		var dc=[];
-		var dd=[];
-		for (var i = 0; i < 6; i++) {
-			da.push(((Math.random()*10)+3).toFixed(0));
-		};
-		for (var i = 0; i < 6; i++) {
-			db.push(((Math.random()*10)+3).toFixed(0));
-		};
-		for (var i = 0; i < 6; i++) {
-			dc.push(((Math.random()*10)+3).toFixed(0));
-		};
-		for (var i = 0; i < 6; i++) {
-			dd.push(((Math.random()*10)+3).toFixed(0));
-		};
-		rightOne(da,db,dc,dd)
-	})
+	var da=[];
+	var db=[];
+	var dc=[];
+	var dd=[];
+	for (var i = 0; i < 6; i++) {
+		da.push(((Math.random()*6)+82).toFixed(0));
+		db.push(((Math.random()*4)+4).toFixed(0));
+		dc.push(((Math.random()*6)+92).toFixed(0));
+		dd.push(((Math.random()*6)+88).toFixed(0));
+	};
+	rightOne(['设备1','设备2','设备3','设备4','设备5','设备6'],da,db,dc,dd,6)
+	var d1=[];
+	var d2=[];
+	var d3=[];
+	var d4=[];
+	var d5=[];
+	var d0=[];
+	var dx=[d0,d1,d2,d3,d4,d5]
+	for (var i = 1; i < 8; i++) {
+		for (var j = 0; j < 6; j++) {
+			console.log(dx[j])
+			dx[j].push(((Math.random()*10)+80).toFixed(0));
+		}
+	};
+	rightTwo(d0,d1,d2,d3,d4,d5)
+	onLeftTwo ()
+	onrightOne()
 
 }
+
+var iii=6;
 
 function leftOne (){
 	var myChart = echarts.init(document.getElementById('left-one'));
@@ -33,11 +39,13 @@ function leftOne (){
 	datab=[];
 	datac=[];
 	datad=[];
+	datae=[];
 	for (var i = 0; i < 10; i++) {
 		dataa.push(Math.round((Math.random() * 8)+89));
 		datab.push(Math.round((Math.random() * 8)+89));
 		datac.push(Math.round((Math.random() * 8)+89));
 		datad.push(Math.round((Math.random() * 8)+89));
+		datae.push(Math.round((Math.random() * 8)+89));
 	}
 	option = {
 		title: {
@@ -57,7 +65,7 @@ function leftOne (){
 			textStyle: {
 				color: '#ffd285',
 			},
-			data: ['工厂1', '工厂2', '工厂3', '工厂4']
+			data: ['安徽方圆机械有限公司', '安徽佳仕龙机械有限公司', '重庆平洋工贸有限公司', '合肥亿恒机械有限公司','安徽大洋机械制造有限公司']
 		},
 		dataZoom: [
 		{	
@@ -100,7 +108,7 @@ function leftOne (){
 			scale: true,
 			name: '设备完好率',
 			max: 99,
-			min: 85,
+			min: 75,
 			"axisLine": {
 				lineStyle: {
 					color: '#c0576d'
@@ -125,7 +133,7 @@ function leftOne (){
 		},
 		series: [
 		{
-			name:'工厂1',
+			name:'安徽方圆机械有限公司',
 			type:'line',
 			data:dataa,
             // smooth: true,
@@ -148,7 +156,7 @@ function leftOne (){
             },
         },
         {
-        	name:'工厂2',
+        	name:'安徽佳仕龙机械有限公司',
         	type:'line',
         	data:datab,
             // smooth: true,
@@ -171,7 +179,7 @@ function leftOne (){
             },
         },
         {
-        	name:'工厂3',
+        	name:'重庆平洋工贸有限公司',
         	type:'line',
         	data:datac,
             // smooth: true,
@@ -194,13 +202,36 @@ function leftOne (){
             },
         },
         {
-        	name:'工厂4',
+        	name:'合肥亿恒机械有限公司',
         	type:'line',
         	data:datad,
             // smooth: true,
             itemStyle: {
             	normal: {
             		color:'#ec4863'
+            	}
+
+            },
+            markPoint: {
+            	data: [
+            	{type: 'max', name: '最大值'},
+            	{type: 'min', name: '最小值'}
+            	]
+            },
+            markLine: {
+            	data: [
+            	{type: 'average', name: '平均值'}
+            	]
+            },
+        },
+        {
+        	name:'安徽大洋机械制造有限公司',
+        	type:'line',
+        	data:datae,
+            // smooth: true,
+            itemStyle: {
+            	normal: {
+            		color:'#5c91c0'
             	}
 
             },
@@ -437,7 +468,7 @@ function leftTwoc(){
 	myChart.setOption(option);
 }
 
-function rightOne(da,db,dc,dd){
+function rightOne(ada,da,db,dc,dd,xx){
 	var myChart = echarts.init(document.getElementById('right-one'));
 
 	option = {
@@ -452,14 +483,14 @@ function rightOne(da,db,dc,dd){
 				fontSize: '30'
 			}
 		},
-		legend: {
-			left: 'center',
-			bottom: '1%',
-			textStyle: {
-				color: '#ffd285',
-			},
-			data: ['开工率', '故障率', '负荷率', '利用率']
-		},
+		// legend: {
+		// 	left: 'center',
+		// 	bottom: '1%',
+		// 	textStyle: {
+		// 		color: '#ffd285',
+		// 	},
+		// 	data: ['开工率', '故障率', '负荷率', '利用率']
+		// },
 		tooltip: {
 			trigger: 'axis',
 		},
@@ -479,7 +510,7 @@ function rightOne(da,db,dc,dd){
 					color: '#ffd285'
 				}
 			},
-			data: ['设备1','设备2','设备3','设备4','设备5','设备6']
+			data: ada
 		},
 		yAxis: [{
 			"axisLine": {
@@ -499,9 +530,12 @@ function rightOne(da,db,dc,dd){
 			axisLabel: {
 				textStyle: {
 					color: '#ffd285'
-				}
+				},
+				formatter: '{value}'+'%'
 			},
-			type: 'value'
+			type: 'value',
+			max: 100,
+			min: 0,
 		},
 		{
 			"axisLine": {
@@ -585,40 +619,9 @@ function rightOne(da,db,dc,dd){
 
 
 	myChart.setOption(option);
-
-	myChart.on('click', function (params) {
-		var num= params.name;
-
-		var d1=[];
-		var d2=[];
-		var d3=[];
-		var d4=[];
-		var d5=[];
-		var d6=[];
-		for (var i = 1; i < 8; i++) {
-			d1.push(((Math.random()*i)+2).toFixed(0));
-		};
-		for (var i = 1; i < 8; i++) {
-			d2.push(((Math.random()*i)+3).toFixed(0));
-		};
-		for (var i = 1; i < 8; i++) {
-			d3.push(((Math.random()*i)+4).toFixed(0));
-		};
-		for (var i = 1; i < 8; i++) {
-			d4.push(((Math.random()*i)+5).toFixed(0));
-		};
-		for (var i = 1; i < 8; i++) {
-			d5.push(((Math.random()*i)+6).toFixed(0));
-		};
-		for (var i = 1; i < 8; i++) {
-			d6.push(((Math.random()*i)+7).toFixed(0));
-		};
-
-		rightTwo(d1,d2,d3,d4,d5,d6,'°C')
-	})
 }
 
-function rightTwo(d1,d2,d3,d4,d5,d6,dxx){
+function rightTwo(d1,d2,d3,d4,d5,d6){
 	var myChart = echarts.init(document.getElementById('right-two'));
 
 	option = {
@@ -681,7 +684,7 @@ function rightTwo(d1,d2,d3,d4,d5,d6,dxx){
 				textStyle: {
 					color: '#ffd285'
 				},
-				formatter: '{value}'+dxx
+				formatter: '{value}'+'%'
 			},
 			type: 'value'
 		},
@@ -786,4 +789,226 @@ function rightTwo(d1,d2,d3,d4,d5,d6,dxx){
 
 
     myChart.setOption(option);
+}
+
+function onLeftTwo (){
+	$("#panel-one").click(function(){
+		iii=6;
+		var da=[];
+		var db=[];
+		var dc=[];
+		var dd=[];
+		for (var i = 0; i < 6; i++) {
+			da.push(((Math.random()*6)+82).toFixed(0));
+			db.push(((Math.random()*4)+4).toFixed(0));
+			dc.push(((Math.random()*6)+92).toFixed(0));
+			dd.push(((Math.random()*6)+88).toFixed(0));
+		};
+		rightOne(['设备1','设备2','设备3','设备4','设备5','设备6'],da,db,dc,dd,6);
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d0=[];
+		var dx=[d0,d1,d2,d3,d4,d5]
+		for (var i = 1; i < 8; i++) {
+			for (var j = 0; j < iii; j++) {
+				console.log(dx[j])
+				dx[j].push(((Math.random()*10)+80).toFixed(0));
+			}
+		};
+		rightTwo(d0,d1,d2,d3,d4,d5)
+	});
+
+	$("#panel-two").click(function(){
+		iii=4;
+		var da=[];
+		var db=[];
+		var dc=[];
+		var dd=[];
+		for (var i = 0; i < 4; i++) {
+			da.push(((Math.random()*6)+82).toFixed(0));
+			db.push(((Math.random()*4)+4).toFixed(0));
+			dc.push(((Math.random()*6)+92).toFixed(0));
+			dd.push(((Math.random()*6)+88).toFixed(0));
+		};
+		rightOne(['设备1','设备2','设备3','设备4'],da,db,dc,dd,4);
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d0=[];
+		var dx=[d0,d1,d2,d3,d4,d5]
+		for (var i = 1; i < 8; i++) {
+			for (var j = 0; j < iii; j++) {
+				console.log(dx[j])
+				dx[j].push(((Math.random()*10)+80).toFixed(0));
+			}
+		};
+		rightTwo(d0,d1,d2,d3,d4,d5)
+	});
+
+	$("#panel-three").click(function(){
+		iii=2;
+		var da=[];
+		var db=[];
+		var dc=[];
+		var dd=[];
+		for (var i = 0; i < 2; i++) {
+			da.push(((Math.random()*6)+82).toFixed(0));
+			db.push(((Math.random()*4)+4).toFixed(0));
+			dc.push(((Math.random()*6)+92).toFixed(0));
+			dd.push(((Math.random()*6)+88).toFixed(0));
+		};
+		rightOne(['设备1','设备2'],da,db,dc,dd,2);
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d0=[];
+		var dx=[d0,d1,d2,d3,d4,d5]
+		for (var i = 1; i < 8; i++) {
+			for (var j = 0; j < iii; j++) {
+				console.log(dx[j])
+				dx[j].push(((Math.random()*10)+80).toFixed(0));
+			}
+		};
+		rightTwo(d0,d1,d2,d3,d4,d5)
+	});
+
+	$("#panel-four").click(function(){
+		iii=5;
+		var da=[];
+		var db=[];
+		var dc=[];
+		var dd=[];
+		for (var i = 0; i < 5; i++) {
+			da.push(((Math.random()*6)+82).toFixed(0));
+			db.push(((Math.random()*4)+4).toFixed(0));
+			dc.push(((Math.random()*6)+92).toFixed(0));
+			dd.push(((Math.random()*6)+88).toFixed(0));
+		};
+		rightOne(['设备1','设备2','设备3','设备4','设备5'],da,db,dc,dd,5);
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d0=[];
+		var dx=[d0,d1,d2,d3,d4,d5]
+		for (var i = 1; i < 8; i++) {
+			for (var j = 0; j < iii; j++) {
+				console.log(dx[j])
+				dx[j].push(((Math.random()*10)+80).toFixed(0));
+			}
+		};
+		rightTwo(d0,d1,d2,d3,d4,d5)
+	});
+
+	$("#panel-five").click(function(){
+		iii=4;
+		var da=[];
+		var db=[];
+		var dc=[];
+		var dd=[];
+		for (var i = 0; i < 4; i++) {
+			da.push(((Math.random()*6)+82).toFixed(0));
+			db.push(((Math.random()*4)+4).toFixed(0));
+			dc.push(((Math.random()*6)+92).toFixed(0));
+			dd.push(((Math.random()*6)+88).toFixed(0));
+		};
+		rightOne(['设备1','设备2','设备3','设备4'],da,db,dc,dd,4);
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d0=[];
+		var dx=[d0,d1,d2,d3,d4,d5]
+		for (var i = 1; i < 8; i++) {
+			for (var j = 0; j < iii; j++) {
+				console.log(dx[j])
+				dx[j].push(((Math.random()*10)+80).toFixed(0));
+			}
+		};
+		rightTwo(d0,d1,d2,d3,d4,d5)
+	});
+}
+
+function onrightOne(){
+	$("#cboxOne").click(function(){
+		
+		
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d0=[];
+		var dx=[d0,d1,d2,d3,d4,d5]
+		for (var i = 1; i < 8; i++) {
+			for (var j = 0; j < iii; j++) {
+				console.log(dx[j])
+				dx[j].push(((Math.random()*10)+80).toFixed(0));
+			}
+		};
+		rightTwo(d0,d1,d2,d3,d4,d5)
+	});
+	$("#cboxTwo").click(function(){
+		
+		
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d0=[];
+		var dx=[d0,d1,d2,d3,d4,d5]
+		for (var i = 1; i < 8; i++) {
+			for (var j = 0; j < iii; j++) {
+				console.log(dx[j])
+				dx[j].push(((Math.random()*4)+4).toFixed(0));
+			}
+		};
+		rightTwo(d0,d1,d2,d3,d4,d5)
+	});
+	$("#cboxThree").click(function(){
+		
+		
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d0=[];
+		var dx=[d0,d1,d2,d3,d4,d5]
+		for (var i = 1; i < 8; i++) {
+			for (var j = 0; j < iii; j++) {
+				console.log(dx[j])
+				dx[j].push(((Math.random()*6)+92).toFixed(0));
+			}
+		};
+		rightTwo(d0,d1,d2,d3,d4,d5)
+	});
+	$("#cboxFour").click(function(){
+		
+		
+		var d1=[];
+		var d2=[];
+		var d3=[];
+		var d4=[];
+		var d5=[];
+		var d0=[];
+		var dx=[d0,d1,d2,d3,d4,d5]
+		for (var i = 1; i < 8; i++) {
+			for (var j = 0; j < iii; j++) {
+				console.log(dx[j])
+				dx[j].push(((Math.random()*6)+88).toFixed(0));
+			}
+		};
+		rightTwo(d0,d1,d2,d3,d4,d5)
+	});
 }
