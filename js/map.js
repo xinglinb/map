@@ -1865,7 +1865,7 @@ function dataFive(dat){
 	}
 	oe = {
 		title: {
-			text: '温油传感器',
+			text: '油温传感器',
 			textStyle: {
 				color: '#fff',
 				fontFamily:'楷体',
