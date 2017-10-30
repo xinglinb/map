@@ -49,7 +49,7 @@ function leftOne (){
 	}
 	option = {
 		title: {
-			text: '地区设备运营分析',
+			text: '安徽地区汽车行业设备运营分析',
 			left: 'center',
 			top: 0,
 			textStyle: {
